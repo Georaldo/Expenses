@@ -27,3 +27,10 @@ C:\Users\ebiso\OneDrive\Desktop\project\project.Shared\obj\Debug\net10.0\staticw
 C:\Users\ebiso\OneDrive\Desktop\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Desktop\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Desktop\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json

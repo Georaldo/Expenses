@@ -24,5 +24,17 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"va5yik35c0"},{"Name":"integrity","Value":"sha256-V\u002BH6gPGWICJgKuhC\u002BBdFzd2nwFWRY2Ykk0uo1B5lsD0="},{"Name":"label","Value":"index.html"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"775"},{"Name":"Content-Type","Value":"text/html"},{"Name":"ETag","Value":"\u0022V\u002BH6gPGWICJgKuhC\u002BBdFzd2nwFWRY2Ykk0uo1B5lsD0=\u0022"},{"Name":"Last-Modified","Value":"Wed, 28 Jan 2026 02:01:52 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="project.dplhz6yfvh.styles.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.styles.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"dplhz6yfvh"},{"Name":"integrity","Value":"sha256-IUM2pz5nZLwE2BLbOPcyTJpMDAHMG8WZ\u002BJqQJzMnYM4="},{"Name":"label","Value":"project.styles.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"79"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022IUM2pz5nZLwE2BLbOPcyTJpMDAHMG8WZ\u002BJqQJzMnYM4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Feb 2026 03:28:22 GMT"},{"Name":"Link","Value":"\u003C_content/project.Shared/project.Shared.34ldtkr1v5.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="project.styles.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.styles.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-IUM2pz5nZLwE2BLbOPcyTJpMDAHMG8WZ\u002BJqQJzMnYM4="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"79"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022IUM2pz5nZLwE2BLbOPcyTJpMDAHMG8WZ\u002BJqQJzMnYM4=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Feb 2026 03:28:22 GMT"},{"Name":"Link","Value":"\u003C_content/project.Shared/project.Shared.34ldtkr1v5.bundle.scp.css\u003E; rel=\u0022preload\u0022; as=\u0022style\u0022"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

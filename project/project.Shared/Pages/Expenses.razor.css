@@ -1,10 +1,885 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿.expenditure-container {
+    --icon-gold: #A38F36;
+    --primary-rose: #D4B2A8;
+    --secondary-grey: #CEC6C3;
+    --beige-bg: #E7D7C8;
+    --off-white-bg: #EDEAE3;
+    --text-dark: #4a4a4a;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text-dark);
+    position: relative;
+}
 
-namespace project.Shared.Pages
-{
-    class Expenses
-    {
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* --- LEFT SIDEBAR --- */
+.sidebar-custom {
+    width: 280px;
+    background-color: var(--beige-bg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border-right: 1px solid var(--secondary-grey);
+    flex-shrink: 0;
+    transition: transform 0.3s ease-in-out;
+    z-index: 100;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Close Button Style */
+.close-sidebar-btn {
+    background: none;
+    border: none;
+    color: var(--icon-gold);
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: fit-content;
+    margin-bottom: -1rem; /* Adjust visual spacing above title */
+}
+
+    .close-sidebar-btn:hover {
+        color: var(--primary-rose);
+    }
+
+.app-brand {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--primary-rose);
+    margin: 0 0 1rem 0;
+    line-height: 1;
+    letter-spacing: -1px;
+    flex-shrink: 0;
+}
+
+.filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: bold;
+    color: #6d6d6d;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+    /* Ensure icons inside labels are Gold */
+    .filter-group label svg {
+        stroke: var(--icon-gold) !important;
+    }
+
+.filter-group-flex {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+.date-selectors {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.sidebar-custom select {
+    flex: 1;
+    padding: 0.5rem;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 4px;
+    background-color: rgba(255,255,255,0.5);
+    color: #333;
+    outline: none;
+}
+
+    .sidebar-custom select:focus {
+        border-color: var(--primary-rose);
+    }
+
+.category-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+    padding-right: 5px;
+}
+
+    .category-list::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    .category-list::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .category-list::-webkit-scrollbar-thumb {
+        background-color: rgba(212, 178, 168, 0.5);
+        border-radius: 10px;
+    }
+
+        .category-list::-webkit-scrollbar-thumb:hover {
+            background-color: var(--primary-rose);
+        }
+
+.category-item {
+    padding: 0.8rem 1rem;
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    background-color: rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+    .category-item:hover {
+        background-color: white;
+        color: var(--primary-rose);
+    }
+
+    .category-item.active {
+        background-color: var(--primary-rose);
+        color: white;
+        font-weight: bold;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    /* Icon coloring logic */
+    .category-item .cat-icon {
+        stroke: var(--icon-gold);
+    }
+
+    .category-item.active .cat-icon {
+        stroke: #A38F36; /* Keep gold even when active */
+        filter: brightness(200%); /* Lighten slightly for contrast on dark bg */
+    }
+
+.cat-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    stroke: var(--icon-gold);
+}
+
+.cat-content {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+    flex: 1;
+}
+
+.cat-amount {
+    font-size: 0.85rem;
+    font-weight: normal;
+    opacity: 0.7;
+    margin-top: 2px;
+}
+
+.category-separator {
+    height: 1px;
+    background-color: var(--secondary-grey);
+    margin: 0.5rem 0 1rem 0;
+    opacity: 0.5;
+    flex-shrink: 0;
+}
+
+/* --- RIGHT CONTENT AREA --- */
+.main-content {
+    flex: 1;
+    background-color: var(--off-white-bg);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    position: relative;
+}
+
+.top-bar {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom: 2px solid var(--beige-bg);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--icon-gold);
+    cursor: pointer;
+    padding: 0;
+}
+
+.page-title h2 {
+    margin: 0;
+    color: var(--primary-rose);
+    font-size: 2rem;
+}
+
+.page-title span {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+/* FILTERS BAR */
+.filters-bar {
+    padding: 1rem 2rem;
+    background-color: white;
+    border-bottom: 1px solid var(--secondary-grey);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.search-filter-control {
+    padding: 0.6rem;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    outline: none;
+    background-color: white;
+    color: #4a4a4a;
+    min-width: 150px;
+}
+
+    .search-filter-control:focus {
+        border-color: var(--primary-rose);
+    }
+
+.icon-btn {
+    background: white;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 6px;
+    padding: 0.6rem 1rem;
+    cursor: pointer;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.2s;
+    font-weight: 600;
+    font-size: 0.9rem;
+    white-space: nowrap;
+}
+
+    .icon-btn svg {
+        stroke: var(--icon-gold);
+    }
+
+    .icon-btn:hover {
+        border-color: var(--primary-rose);
+        color: var(--primary-rose);
+        background-color: var(--off-white-bg);
+    }
+
+/* Download Options */
+.download-option-item {
+    padding: 1rem;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: all 0.2s;
+    margin-bottom: 0.8rem;
+}
+
+    .download-option-item:hover {
+        border-color: var(--primary-rose);
+        background-color: rgba(212, 178, 168, 0.1);
+    }
+
+.add-btn {
+    background-color: var(--primary-rose); /* Button is Rose */
+    color: white;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+    .add-btn:hover {
+        background-color: #c49f94;
+        transform: scale(1.05);
+    }
+
+.content-area {
+    padding: 2rem;
+}
+
+/* EXPENSE LIST STYLES */
+.expense-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.expense-card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent;
+    break-inside: avoid; /* Prevent card split on print */
+}
+
+    .expense-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        border-color: var(--secondary-grey);
+    }
+
+.expense-card-icon {
+    width: 50px;
+    height: 50px;
+    background-color: var(--off-white-bg);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Icon inside card uses Gold */
+    color: var(--icon-gold);
+    flex-shrink: 0;
+}
+
+    .expense-card-icon svg {
+        stroke: var(--icon-gold);
+    }
+
+.expense-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.expense-title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.expense-meta {
+    font-size: 0.9rem;
+    color: #888;
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.expense-amount-display {
+    font-weight: 800;
+    font-size: 1.2rem;
+    color: var(--primary-rose);
+    white-space: nowrap;
+    /* Flex to align amount, info button, delete button inline */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Action Buttons (Info & Delete) */
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--secondary-grey);
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+    .action-btn svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+    }
+
+.delete-btn:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: #dc3545; /* Red color on hover */
+}
+
+.info-btn:hover {
+    background-color: rgba(163, 143, 54, 0.1);
+    color: var(--icon-gold); /* Gold color on hover */
+}
+
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* --- MODAL STYLES --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(2px);
+}
+
+.modal-content {
+    background-color: var(--off-white-bg);
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.modal-header {
+    background-color: var(--beige-bg);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--secondary-grey);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+    .modal-header h3 {
+        margin: 0;
+        color: #5a5a5a;
+        font-size: 1.25rem;
+    }
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--icon-gold); /* Icon */
+    cursor: pointer;
+}
+
+.modal-body {
+    padding: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+    .form-group label {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #666;
+        font-size: 0.9rem;
+    }
+
+        /* Ensure label icons are Gold */
+        .form-group label svg {
+            stroke: var(--icon-gold) !important;
+        }
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 6px;
+    background-color: white;
+    box-sizing: border-box;
+    font-size: 1rem;
+}
+
+    .form-control.clickable {
+        cursor: pointer;
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+        .form-control.clickable:hover {
+            border-color: var(--primary-rose);
+        }
+
+    .form-control:focus {
+        border-color: var(--primary-rose);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(212, 178, 168, 0.2);
+    }
+
+/* File Upload Styles */
+.upload-box {
+    border: 2px dashed var(--secondary-grey);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.5);
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+    .upload-box:hover {
+        border-color: var(--primary-rose);
+        background-color: rgba(212, 178, 168, 0.1);
+    }
+
+.upload-icon {
+    font-size: 2rem;
+    color: var(--icon-gold);
+}
+
+    .upload-icon svg {
+        stroke: var(--icon-gold);
+    }
+
+.upload-text {
+    font-weight: 600;
+    color: #555;
+}
+
+.upload-subtext {
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Upload Option Button Styles */
+.upload-option-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1.5rem;
+    background-color: white;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #4a4a4a;
+    width: 100px;
+    text-align: center;
+}
+
+    .upload-option-btn svg {
+        stroke: var(--icon-gold);
+    }
+
+    .upload-option-btn:hover {
+        border-color: var(--primary-rose);
+        background-color: var(--off-white-bg);
+        color: var(--primary-rose);
+    }
+
+/* KEYPAD STYLES */
+.keypad-display {
+    font-size: 2rem;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--secondary-grey);
+    font-weight: bold;
+    color: var(--primary-rose);
+}
+
+.keypad-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.keypad-btn {
+    padding: 1.2rem;
+    font-size: 1.5rem;
+    background-color: white;
+    border: 1px solid var(--secondary-grey);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+    .keypad-btn:hover {
+        background-color: var(--off-white-bg);
+        border-color: var(--primary-rose);
+    }
+
+    .keypad-btn.action {
+        background-color: var(--beige-bg);
+        font-size: 1rem;
+        font-weight: bold;
+    }
+
+/* SELECTION LIST STYLES */
+.selection-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.selection-item {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .selection-item:hover {
+        background-color: var(--off-white-bg);
+        color: var(--primary-rose);
+    }
+
+    /* Ensure selection checks and icons are Gold */
+    .selection-item span[style*="color: var(--icon-gold)"] {
+        color: var(--icon-gold) !important;
+    }
+
+    .selection-item svg {
+        stroke: var(--icon-gold);
+    }
+
+    .selection-item:last-child {
+        border-bottom: none;
+    }
+
+.selection-subtext {
+    font-size: 0.85rem;
+    color: #888;
+    display: block;
+    margin-top: 2px;
+}
+
+.modal-footer {
+    padding: 1.5rem;
+    background-color: white;
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    border-top: 1px solid #eee;
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.btn {
+    padding: 0.6rem 1.5rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--secondary-grey);
+    color: #888;
+}
+
+    .btn-secondary:hover {
+        border-color: var(--dusty-rose);
+        color: var(--dusty-rose);
+    }
+
+.btn-primary {
+    background-color: var(--primary-rose);
+    color: white;
+}
+
+    .btn-primary:hover {
+        opacity: 0.9;
+    }
+
+.btn-danger {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+}
+
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+
+/* --- RESPONSIVE MEDIA QUERIES --- */
+@media (max-width: 768px) {
+    .sidebar-custom {
+        position: fixed;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        transform: translateX(-100%);
+        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    }
+
+        .sidebar-custom.open {
+            transform: translateX(0);
+        }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .filters-bar {
+        padding: 1rem;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+    }
+
+    .search-filter-control, .icon-btn {
+        width: 100%;
+    }
+
+    .expense-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+
+    .expense-card-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .expense-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
+
+    .expense-amount-display {
+        align-self: flex-end;
+        display: flex;
+        align-items: center;
+    }
+
+    .top-bar {
+        padding: 1rem;
+    }
+
+    .page-title h2 {
+        font-size: 1.5rem;
+    }
+
+    .content-area {
+        padding: 1rem;
+    }
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+    backdrop-filter: blur(2px);
+}
+
+/* --- PRINT STYLES (For PDF Export) --- */
+@media print {
+    body, .expenditure-container, .main-content {
+        height: auto !important;
+        overflow: visible !important;
+        display: block !important;
+    }
+
+    .sidebar-custom, .top-bar, .filters-bar, .action-btn, .modal-overlay {
+        display: none !important;
+    }
+
+    .expense-card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+    }
+
+    .content-area {
+        padding: 0 !important;
+    }
+
+        .content-area::before {
+            content: "Expense Report";
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+            margin-bottom: 20px;
+            color: black;
+        }
+
+    .expense-title {
+        color: black !important;
+    }
+
+    .expense-amount-display {
+        color: black !important;
     }
 }

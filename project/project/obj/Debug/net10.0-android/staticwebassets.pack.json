@@ -9,11 +9,15 @@
       "PackagePath": "staticwebassets\\_framework\\blazor.webview.js"
     },
     {
-      "Id": "C:\\Users\\ebiso\\OneDrive\\Desktop\\project\\project\\wwwroot\\app.css",
+      "Id": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\project\\project\\obj\\Debug\\net10.0-android\\scopedcss\\bundle\\project.styles.css",
+      "PackagePath": "staticwebassets\\project.styles.css"
+    },
+    {
+      "Id": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\project\\project\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "C:\\Users\\ebiso\\OneDrive\\Desktop\\project\\project\\wwwroot\\index.html",
+      "Id": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\project\\project\\wwwroot\\index.html",
       "PackagePath": "staticwebassets\\index.html"
     },
     {

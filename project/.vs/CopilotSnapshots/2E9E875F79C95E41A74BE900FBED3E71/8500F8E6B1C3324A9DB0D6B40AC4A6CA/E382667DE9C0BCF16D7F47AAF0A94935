@@ -1,0 +1,514 @@
+﻿using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Forms;
+using Microsoft.JSInterop;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using project.Shared.Model;
+
+namespace project.Shared.Pages
+{
+    public partial class Expenses
+    {
+        // --- State ---
+        private int SelectedMonth { get; set; } = DateTime.Now.Month;
+        private int SelectedYear { get; set; } = DateTime.Now.Year;
+        private string SelectedCategory { get; set; } = "All Expenses";
+
+        // Sidebar State
+        private bool IsSidebarOpen { get; set; } = false;
+
+        // Filter States
+        private string FilterSearchQuery { get; set; } = "";
+        private string FilterCategory { get; set; } = "";
+        private string FilterStaff { get; set; } = "";
+        private string SortOption { get; set; } = "DateDesc"; // New State
+
+        // Pop-up states
+        private bool IsModalOpen { get; set; } = false;
+        private bool IsUploadPopupOpen { get; set; } = false;
+        private bool IsAmountPopupOpen { get; set; } = false;
+        private bool IsStaffPopupOpen { get; set; } = false;
+        private bool IsFilterStaffPopupOpen { get; set; } = false; // New Filter Popup
+        private bool IsCategoryPopupOpen { get; set; } = false;
+        private bool IsSubCategoryPopupOpen { get; set; } = false;
+        private bool IsDownloadPopupOpen { get; set; } = false;
+        private bool IsDeleteConfirmOpen { get; set; } = false; // Delete Modal State
+
+        // Search & Filter State
+        private string _tempAmountString = "0";
+        private string _staffSearchQuery = "";
+        private ExpenditureItem? _itemToDelete; // To store item pending deletion
+
+        // --- Data Models ---
+        private ExpenditureItem NewExpense { get; set; } = new ExpenditureItem();
+
+        // Helper property to check if we are editing an existing item
+        private bool IsEditing => ExpensesDb.Any(e => e.Id == NewExpense.Id);
+
+        // Model types moved to project.Shared.Model
+
+        // Main Categories (Same keys as Dictionary)
+        private List<string> Categories = new List<string>
+        {
+            "Marketing", "Staff", "Utility", "Vendor", "Finance", "Rental", "Others"
+        };
+
+        // Sub-Category Definitions
+        private Dictionary<string, List<SubCategoryItem>> CategoryData = new Dictionary<string, List<SubCategoryItem>>
+        {
+            { "Marketing", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Marketing and Advertising", Description = "Costs for ads, promotions, and online campaign" }
+                }
+            },
+            { "Staff", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Employee Wages", Description = "Salaries, hourly wages, and employee benefits" },
+                    new SubCategoryItem { Name = "Training and Development", Description = "Employee training or certifications" },
+                    new SubCategoryItem { Name = "Staff Meals/Perks", Description = "Meals or other perks provided to employees" },
+                    new SubCategoryItem { Name = "Social Responsibility Programs", Description = "Contributions to community and charity purpose" }
+                }
+            },
+            { "Utility", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Utilities", Description = "Electricity, water, heating, and internet" },
+                    new SubCategoryItem { Name = "Technology and Software", Description = "POS systems, accounting software, etc" },
+                    new SubCategoryItem { Name = "Security", Description = "Costs for surveillance cameras, alarms" },
+                    new SubCategoryItem { Name = "Packaging and Branding", Description = "Custom packaging or branding designs" },
+                    new SubCategoryItem { Name = "Office Supplies", Description = "Costs for everyday office supplies like paper" },
+                    new SubCategoryItem { Name = "Event Costs", Description = "Expenses related to hosting in-store events" },
+                    new SubCategoryItem { Name = "Waste Disposal Fees", Description = "Fees for waste removal and disposal" }
+                }
+            },
+            { "Vendor", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Inventory Costs", Description = "Purchasing stock or raw materials for resale" }
+                }
+            },
+            { "Finance", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Insurance", Description = "Property, liability, and workers' compensation" },
+                    new SubCategoryItem { Name = "Taxes and Fees", Description = "Fees, Sales tax, payroll tax and licensing fees" },
+                    new SubCategoryItem { Name = "Credit Card Fees", Description = "Transaction fees for credit/debit card payment" },
+                    new SubCategoryItem { Name = "Depreciation of Assets", Description = "The loss of value of assets over time" },
+                    new SubCategoryItem { Name = "Franchise Fees", Description = "Royalty or franchise fees (if applicable)" },
+                    new SubCategoryItem { Name = "Bad Debt", Description = "Unpaid customer invoices or debts" },
+                    new SubCategoryItem { Name = "Interest on Loans", Description = "Interest payments for business loans" },
+                    new SubCategoryItem { Name = "Subscription Services", Description = "Fees for software tools like inventory management" },
+                    new SubCategoryItem { Name = "Bank Fees", Description = "Charges by banks for transactions or maintenance" }
+                }
+            },
+            { "Rental", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Rent or Lease", Description = "Cost of renting the physical space for the store" },
+                    new SubCategoryItem { Name = "Maintenance and Repairs", Description = "Costs of maintaining equipment and facilities" },
+                    new SubCategoryItem { Name = "Cleaning and Janitorial", Description = "Regular cleaning services for the store" }
+                }
+            },
+            { "Others", new List<SubCategoryItem>
+                {
+                    new SubCategoryItem { Name = "Shipping and Delivery", Description = "Postage, packaging, and courier services" },
+                    new SubCategoryItem { Name = "Consulting Fees", Description = "Fees paid to consultants for business advice" },
+                    new SubCategoryItem { Name = "R&D", Description = "Costs related to developing new products" }
+                }
+            }
+        };
+
+        private List<StaffMember> StaffList = new List<StaffMember>
+        {
+            new StaffMember { Name = "John Doe", Phone = "+1 555-0101" },
+            new StaffMember { Name = "Jane Smith", Phone = "+1 555-0102" },
+            new StaffMember { Name = "Alice Johnson", Phone = "+1 555-0103" },
+            new StaffMember { Name = "Robert Brown", Phone = "+1 555-0104" },
+            new StaffMember { Name = "Emily Davis", Phone = "+1 555-0105" }
+        };
+
+        // Hardcoded Database of Expenses
+        private List<ExpenditureItem> ExpensesDb = new List<ExpenditureItem>();
+
+        protected override void OnInitialized()
+        {
+            // Populate with dummy data
+            ExpensesDb.Add(new ExpenditureItem { Category = "Marketing", SubCategory = "Marketing and Advertising", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 5), Staff = "John Doe", InvoiceTitle = "FB Ads Campaign", Amount = 1500.00m, Remark = "Q3 Campaign" });
+            ExpensesDb.Add(new ExpenditureItem { Category = "Staff", SubCategory = "Staff Meals/Perks", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 12), Staff = "Jane Smith", InvoiceTitle = "Weekly Team Lunch", Amount = 350.50m, Remark = "Pizza Hut" });
+            ExpensesDb.Add(new ExpenditureItem { Category = "Utility", SubCategory = "Utilities", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1), Staff = "Alice Johnson", InvoiceTitle = "Internet Bill", Amount = 299.00m, Remark = "Unifi Business" });
+            ExpensesDb.Add(new ExpenditureItem { Category = "Vendor", SubCategory = "Inventory Costs", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 15), Staff = "Robert Brown", InvoiceTitle = "Raw Material Restock", Amount = 5400.00m, Remark = "Bulk order" });
+            ExpensesDb.Add(new ExpenditureItem { Category = "Rental", SubCategory = "Rent or Lease", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 1), Staff = "John Doe", InvoiceTitle = "Office Rent", Amount = 3500.00m, Remark = "Monthly payment" });
+            ExpensesDb.Add(new ExpenditureItem { Category = "Others", SubCategory = "Shipping and Delivery", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 20), Staff = "Emily Davis", InvoiceTitle = "Courier Services", Amount = 125.00m, Remark = "Client deliverables" });
+            ExpensesDb.Add(new ExpenditureItem { Category = "Marketing", SubCategory = "Marketing and Advertising", Date = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 25), Staff = "John Doe", InvoiceTitle = "Flyer Printing", Amount = 450.00m, Remark = "Local distribution" });
+        }
+
+        // Filter Logic
+        private IEnumerable<ExpenditureItem> FilteredExpenses
+        {
+            get
+            {
+                // First filter by Date (Month/Year) which is always active
+                var query = ExpensesDb.Where(e => e.Date.Month == SelectedMonth && e.Date.Year == SelectedYear);
+
+                // Then filter by Sidebar selection
+                if (SelectedCategory != "All Expenses")
+                {
+                    query = query.Where(e => e.Category == SelectedCategory);
+                }
+                else
+                {
+                    // Only apply these filters when "All Expenses" is selected
+                    if (!string.IsNullOrEmpty(FilterCategory))
+                        query = query.Where(e => e.Category == FilterCategory);
+
+                    if (!string.IsNullOrEmpty(FilterStaff))
+                        query = query.Where(e => e.Staff == FilterStaff);
+
+                    if (!string.IsNullOrEmpty(FilterSearchQuery))
+                        query = query.Where(e => e.InvoiceTitle.Contains(FilterSearchQuery, StringComparison.OrdinalIgnoreCase) || (e.Remark != null && e.Remark.Contains(FilterSearchQuery, StringComparison.OrdinalIgnoreCase)));
+                }
+
+                // Apply Sort
+                switch (SortOption)
+                {
+                    case "NameAsc":
+                        return query.OrderBy(e => e.InvoiceTitle);
+                    case "NameDesc":
+                        return query.OrderByDescending(e => e.InvoiceTitle);
+                    case "AmountAsc":
+                        return query.OrderBy(e => e.Amount);
+                    case "AmountDesc":
+                        return query.OrderByDescending(e => e.Amount);
+                    default: // DateDesc
+                        return query.OrderByDescending(e => e.Date);
+                }
+            }
+        }
+
+        // Filtered Staff Logic (For Search Bar inside Staff Modal)
+        private IEnumerable<StaffMember> FilteredStaff => string.IsNullOrWhiteSpace(_staffSearchQuery)
+            ? StaffList
+            : StaffList.Where(s => s.Name.Contains(_staffSearchQuery, StringComparison.OrdinalIgnoreCase) ||
+                                   s.Phone.Contains(_staffSearchQuery, StringComparison.OrdinalIgnoreCase));
+
+        // --- HELPER: Icons ---
+        private string GetIconForCategory(string category)
+        {
+            string path = "";
+            switch (category)
+            {
+                case "Marketing":
+                    path = "<polygon points='11 5 6 9 2 9 2 15 6 15 11 19 11 5'></polygon><path d='M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07'></path>";
+                    break;
+                case "Staff":
+                    path = "<path d='M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2'></path><circle cx='9' cy='7' r='4'></circle><path d='M23 21v-2a4 4 0 0 0-3-3.87'></path><path d='M16 3.13a4 4 0 0 1 0 7.75'></path>";
+                    break;
+                case "Utility":
+                    path = "<polygon points='13 2 3 14 12 14 11 22 21 10 12 10 13 2'></polygon>";
+                    break;
+                case "Vendor":
+                    path = "<path d='M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z'></path><polyline points='9 22 9 12 15 12 15 22'></polyline>";
+                    break;
+                case "Finance":
+                    path = "<line x1='12' y1='1' x2='12' y2='23'></line><path d='M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6'></path>";
+                    break;
+                case "Rental":
+                    path = "<rect x='4' y='2' width='16' height='20' rx='2' ry='2'></rect><line x1='9' y1='22' x2='9' y2='22'></line><line x1='15' y1='22' x2='15' y2='22'></line><line x1='12' y1='22' x2='12' y2='22'></line><line x1='12' y1='2' x2='12' y2='22'></line>";
+                    break;
+                case "Others":
+                    path = "<circle cx='12' cy='12' r='10'></circle><line x1='12' y1='8' x2='12' y2='12'></line><line x1='12' y1='16' x2='12.01' y2='16'></line>";
+                    break;
+                default:
+                    path = "<circle cx='12' cy='12' r='10'></circle>";
+                    break;
+            }
+            return $"<svg class='cat-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>{path}</svg>";
+        }
+
+        // --- Main Actions ---
+        private void SelectCategory(string category)
+        {
+            SelectedCategory = category;
+            // On mobile, close sidebar when category is selected
+            if (IsSidebarOpen)
+            {
+                IsSidebarOpen = false;
+            }
+        }
+
+        private void SelectAllExpenses()
+        {
+            SelectedCategory = "All Expenses";
+            if (IsSidebarOpen)
+            {
+                IsSidebarOpen = false;
+            }
+        }
+
+        private void ToggleSidebar()
+        {
+            IsSidebarOpen = !IsSidebarOpen;
+        }
+
+        private void OpenAddModal()
+        {
+            NewExpense = new ExpenditureItem
+            {
+                Category = SelectedCategory == "All Expenses" ? Categories[0] : SelectedCategory,
+                SubCategory = "", // Reset SubCategory
+                Date = new DateTime(SelectedYear, SelectedMonth, DateTime.Now.Day > 28 ? 1 : DateTime.Now.Day)
+            };
+            IsModalOpen = true;
+        }
+
+        private void CloseModal()
+        {
+            IsModalOpen = false;
+            // Close all sub-popups
+            IsUploadPopupOpen = false;
+            IsAmountPopupOpen = false;
+            IsStaffPopupOpen = false;
+            IsCategoryPopupOpen = false;
+            IsSubCategoryPopupOpen = false;
+            IsDownloadPopupOpen = false;
+            IsFilterStaffPopupOpen = false;
+            IsDeleteConfirmOpen = false;
+        }
+
+        private void SaveExpenditure()
+        {
+            var existingItem = ExpensesDb.FirstOrDefault(e => e.Id == NewExpense.Id);
+
+            if (existingItem != null)
+            {
+                // Update existing record
+                existingItem.Category = NewExpense.Category;
+                existingItem.SubCategory = NewExpense.SubCategory;
+                existingItem.Date = NewExpense.Date;
+                existingItem.Staff = NewExpense.Staff;
+                existingItem.InvoiceTitle = NewExpense.InvoiceTitle;
+                existingItem.Amount = NewExpense.Amount;
+                existingItem.Remark = NewExpense.Remark;
+                existingItem.FileName = NewExpense.FileName;
+            }
+            else
+            {
+                // Add new record
+                ExpensesDb.Add(NewExpense);
+            }
+
+            IsModalOpen = false;
+        }
+
+        private async Task HandleFileSelected(InputFileChangeEventArgs e)
+        {
+            IsUploadPopupOpen = false;
+            var file = e.File;
+            if (file != null)
+            {
+                NewExpense.FileName = file.Name;
+            }
+            await Task.CompletedTask;
+        }
+
+        // --- Keypad/Popup Logic ---
+
+        // 1. Amount Logic
+        private void OpenAmountPopup()
+        {
+            _tempAmountString = NewExpense.Amount == 0 ? "0" : NewExpense.Amount.ToString("0.##");
+            IsAmountPopupOpen = true;
+        }
+
+        private void AppendToAmount(string val)
+        {
+            if (_tempAmountString == "0" && val != ".")
+            {
+                _tempAmountString = val;
+            }
+            else
+            {
+                // Prevent multiple decimals
+                if (val == "." && _tempAmountString.Contains(".")) return;
+                _tempAmountString += val;
+            }
+        }
+
+        private void BackspaceAmount()
+        {
+            if (_tempAmountString.Length > 0)
+            {
+                _tempAmountString = _tempAmountString.Substring(0, _tempAmountString.Length - 1);
+            }
+            if (string.IsNullOrEmpty(_tempAmountString))
+            {
+                _tempAmountString = "0";
+            }
+        }
+
+        private void ClearAmount()
+        {
+            _tempAmountString = "0";
+        }
+
+        private void SaveAmount()
+        {
+            if (decimal.TryParse(_tempAmountString, out decimal result))
+            {
+                NewExpense.Amount = result;
+            }
+            IsAmountPopupOpen = false;
+        }
+
+        // 2. Staff Logic
+        private void OpenStaffPopup()
+        {
+            _staffSearchQuery = ""; // Reset search when opening
+            IsStaffPopupOpen = true;
+        }
+
+        private void SelectStaff(string staffName)
+        {
+            NewExpense.Staff = staffName;
+            IsStaffPopupOpen = false;
+        }
+
+        // 3. Category Logic
+        private void SelectCategoryFromPopup(string category)
+        {
+            if (NewExpense.Category != category)
+            {
+                NewExpense.Category = category;
+                NewExpense.SubCategory = ""; // Reset sub-category on change
+            }
+            IsCategoryPopupOpen = false;
+            // Automatically trigger sub-category popup
+            IsSubCategoryPopupOpen = true;
+        }
+
+        // 4. Sub-Category Logic
+        private void OpenSubCategoryPopup()
+        {
+            IsSubCategoryPopupOpen = true;
+        }
+
+        private void SelectSubCategory(string subCategory)
+        {
+            NewExpense.SubCategory = subCategory;
+            IsSubCategoryPopupOpen = false;
+        }
+
+        // 5. Download Logic
+        private async Task DownloadReport(string format)
+        {
+            if (format == "csv")
+            {
+                var csv = new StringBuilder();
+                csv.AppendLine("Category,SubCategory,Date,Staff,Invoice Title,Amount (MYR),Remark");
+
+                foreach (var item in FilteredExpenses)
+                {
+                    csv.AppendLine($"{EscapeCsv(item.Category)},{EscapeCsv(item.SubCategory)},{item.Date:yyyy-MM-dd},{EscapeCsv(item.Staff)},{EscapeCsv(item.InvoiceTitle)},{item.Amount},{EscapeCsv(item.Remark)}");
+                }
+
+                var fileName = $"Expenses_{DateTime.Now:yyyyMMdd_HHmm}.csv";
+                var fileBytes = Encoding.UTF8.GetBytes(csv.ToString());
+                var base64 = Convert.ToBase64String(fileBytes);
+
+                await JS.InvokeVoidAsync("downloadFile", fileName, "text/csv", base64);
+            }
+            else if (format == "pdf")
+            {
+                // Trigger browser print dialog for PDF saving
+                await JS.InvokeVoidAsync("window.print");
+            }
+
+            IsDownloadPopupOpen = false;
+        }
+
+        private string EscapeCsv(string field)
+        {
+            if (string.IsNullOrEmpty(field)) return "";
+            if (field.Contains(",") || field.Contains("\"") || field.Contains("\n"))
+            {
+                return $"\"{field.Replace("\"", "\"\"")}\"";
+            }
+            return field;
+        }
+
+        // 6. Filter Staff Logic
+        private void OpenFilterStaffPopup()
+        {
+            _staffSearchQuery = "";
+            IsFilterStaffPopupOpen = true;
+        }
+
+        private void SelectStaffFilter(string staffName)
+        {
+            FilterStaff = staffName;
+            IsFilterStaffPopupOpen = false;
+        }
+
+        // 7. Get Category Total
+        private string GetCategoryTotal(string category)
+        {
+            var query = ExpensesDb.Where(e => e.Date.Month == SelectedMonth && e.Date.Year == SelectedYear);
+
+            if (!string.IsNullOrEmpty(category))
+            {
+                query = query.Where(e => e.Category == category);
+            }
+
+            decimal total = query.Sum(e => e.Amount);
+            return $"MYR {total:N2}";
+        }
+
+        // 8. Go To Profile
+        private void GoToProfile()
+        {
+            Navigation.NavigateTo("/profile");
+        }
+
+        // 9. Delete Logic
+        private void RequestDelete(ExpenditureItem item)
+        {
+            _itemToDelete = item;
+            IsDeleteConfirmOpen = true;
+        }
+
+        private void ConfirmDelete()
+        {
+            if (_itemToDelete != null)
+            {
+                ExpensesDb.Remove(_itemToDelete);
+                _itemToDelete = null;
+            }
+            IsDeleteConfirmOpen = false;
+        }
+
+        private void CancelDelete()
+        {
+            _itemToDelete = null;
+            IsDeleteConfirmOpen = false;
+        }
+
+        // 10. View Info (Populate Add Modal with Data)
+        private void ShowExpenseDetails(ExpenditureItem item)
+        {
+            NewExpense = new ExpenditureItem
+            {
+                Id = item.Id, // Copy the ID to track it's the same record
+                Category = item.Category,
+                SubCategory = item.SubCategory,
+                Date = item.Date,
+                Staff = item.Staff,
+                InvoiceTitle = item.InvoiceTitle,
+                Amount = item.Amount,
+                Remark = item.Remark,
+                FileName = item.FileName
+            };
+            IsModalOpen = true;
+        }
+
+        // ExpenditureItem moved to project.Shared.Model
+    }
+}

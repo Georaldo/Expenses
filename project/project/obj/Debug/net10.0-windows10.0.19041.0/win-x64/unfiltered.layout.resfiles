@@ -6,6 +6,9 @@ wwwroot\_content\project.Shared\lib\bootstrap\dist\css\bootstrap.min.css.gz
 wwwroot\_content\project.Shared\lib\bootstrap\dist\css\bootstrap.min.css.map.br
 wwwroot\_content\project.Shared\app.css.br
 wwwroot\_content\project.Shared\lib\bootstrap\dist\css\bootstrap.min.css.br
+wwwroot\_content\project.Shared\project.Shared.34ldtkr1v5.bundle.scp.css.br
+wwwroot\_content\project.Shared\project.Shared.34ldtkr1v5.bundle.scp.css.gz
+wwwroot\_content\project.Shared\project.Shared.34ldtkr1v5.bundle.scp.css
 wwwroot\_content\project.Shared\app.css
 wwwroot\_content\project.Shared\favicon.png
 wwwroot\_content\project.Shared\lib\bootstrap\dist\css\bootstrap.min.css
@@ -67,6 +70,7 @@ splashSplashScreen.scale-125.png
 splashSplashScreen.scale-150.png
 splashSplashScreen.scale-200.png
 splashSplashScreen.scale-400.png
+wwwroot\project.styles.css
 AboutAssets.txt
 wwwroot\app.css
 wwwroot\index.html
