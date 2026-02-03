@@ -13,12 +13,6 @@
     position: relative;
 }
 
-body {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
 /* --- LEFT SIDEBAR --- */
 .sidebar-custom {
     width: 280px;
@@ -26,7 +20,7 @@ body {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem; /* Reduced gap from 2rem */
     border-right: 1px solid var(--secondary-grey);
     flex-shrink: 0;
     transition: transform 0.3s ease-in-out;
@@ -46,7 +40,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     width: fit-content;
-    margin-bottom: -1rem; /* Adjust visual spacing above title */
+    margin-bottom: -1rem;
 }
 
     .close-sidebar-btn:hover {
@@ -76,7 +70,7 @@ body {
 }
 
     /* Ensure icons inside labels are Gold */
-    .filter-group label svg {
+    .filter-group label ::deep svg {
         stroke: var(--icon-gold) !important;
     }
 
@@ -133,15 +127,15 @@ body {
         }
 
 .category-item {
-    padding: 0.8rem 1rem;
-    margin-bottom: 0.5rem;
+    padding: 0.4rem 0.6rem; /* Compact padding to reduce size */
+    margin-bottom: 0.25rem; /* Reduced margin */
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.2s ease;
     background-color: rgba(255,255,255,0.3);
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px; /* Reduced gap */
 }
 
     .category-item:hover {
@@ -156,19 +150,22 @@ body {
         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
 
-    /* Icon coloring logic */
-    .category-item .cat-icon {
+    /* Icon coloring logic - Use ::deep to target dynamic icons */
+    .category-item .cat-icon,
+    .category-item ::deep .cat-icon {
         stroke: var(--icon-gold);
     }
 
-    .category-item.active .cat-icon {
-        stroke: #A38F36; /* Keep gold even when active */
-        filter: brightness(200%); /* Lighten slightly for contrast on dark bg */
+    .category-item.active .cat-icon,
+    .category-item.active ::deep .cat-icon {
+        stroke: #A38F36;
+        filter: brightness(200%);
     }
 
-.cat-icon {
-    width: 24px;
-    height: 24px;
+.cat-icon,
+::deep .cat-icon {
+    width: 20px; /* Smaller icon size */
+    height: 20px;
     flex-shrink: 0;
     stroke: var(--icon-gold);
 }
@@ -176,15 +173,15 @@ body {
 .cat-content {
     display: flex;
     flex-direction: column;
-    line-height: 1.2;
+    line-height: 1.1;
     flex: 1;
 }
 
 .cat-amount {
-    font-size: 0.85rem;
+    font-size: 0.75rem; /* Smaller font for amount */
     font-weight: normal;
-    opacity: 0.7;
-    margin-top: 2px;
+    opacity: 0.8;
+    margin-top: 4px; /* Added spacing between name and amount */
 }
 
 .category-separator {
@@ -285,7 +282,7 @@ body {
     white-space: nowrap;
 }
 
-    .icon-btn svg {
+    .icon-btn ::deep svg {
         stroke: var(--icon-gold);
     }
 
@@ -314,7 +311,7 @@ body {
     }
 
 .add-btn {
-    background-color: var(--primary-rose); /* Button is Rose */
+    background-color: var(--primary-rose);
     color: white;
     border: none;
     width: 45px;
@@ -356,7 +353,7 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
     transition: transform 0.2s, box-shadow 0.2s;
     border: 1px solid transparent;
-    break-inside: avoid; /* Prevent card split on print */
+    break-inside: avoid;
 }
 
     .expense-card:hover {
@@ -373,12 +370,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Icon inside card uses Gold */
     color: var(--icon-gold);
     flex-shrink: 0;
 }
 
-    .expense-card-icon svg {
+    .expense-card-icon ::deep svg {
         stroke: var(--icon-gold);
     }
 
@@ -411,13 +407,12 @@ body {
     font-size: 1.2rem;
     color: var(--primary-rose);
     white-space: nowrap;
-    /* Flex to align amount, info button, delete button inline */
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
-/* Action Buttons (Info & Delete) */
+/* Action Buttons */
 .action-btn {
     background: none;
     border: none;
@@ -439,12 +434,12 @@ body {
 
 .delete-btn:hover {
     background-color: rgba(220, 53, 69, 0.1);
-    color: #dc3545; /* Red color on hover */
+    color: #dc3545;
 }
 
 .info-btn:hover {
     background-color: rgba(163, 143, 54, 0.1);
-    color: var(--icon-gold); /* Gold color on hover */
+    color: var(--icon-gold);
 }
 
 .empty-state {
@@ -514,7 +509,7 @@ body {
     background: none;
     border: none;
     font-size: 1.5rem;
-    color: var(--icon-gold); /* Icon */
+    color: var(--icon-gold);
     cursor: pointer;
 }
 
@@ -536,8 +531,7 @@ body {
         font-size: 0.9rem;
     }
 
-        /* Ensure label icons are Gold */
-        .form-group label svg {
+        .form-group label ::deep svg {
             stroke: var(--icon-gold) !important;
         }
 
@@ -569,7 +563,6 @@ body {
         box-shadow: 0 0 0 2px rgba(212, 178, 168, 0.2);
     }
 
-/* File Upload Styles */
 .upload-box {
     border: 2px dashed var(--secondary-grey);
     border-radius: 8px;
@@ -609,7 +602,6 @@ body {
     color: #888;
 }
 
-/* Upload Option Button Styles */
 .upload-option-btn {
     display: flex;
     flex-direction: column;
@@ -636,7 +628,6 @@ body {
         color: var(--primary-rose);
     }
 
-/* KEYPAD STYLES */
 .keypad-display {
     font-size: 2rem;
     text-align: center;
@@ -674,7 +665,6 @@ body {
         font-weight: bold;
     }
 
-/* SELECTION LIST STYLES */
 .selection-list {
     list-style: none;
     padding: 0;
@@ -696,12 +686,11 @@ body {
         color: var(--primary-rose);
     }
 
-    /* Ensure selection checks and icons are Gold */
     .selection-item span[style*="color: var(--icon-gold)"] {
         color: var(--icon-gold) !important;
     }
 
-    .selection-item svg {
+    .selection-item ::deep svg {
         stroke: var(--icon-gold);
     }
 
@@ -716,58 +705,6 @@ body {
     margin-top: 2px;
 }
 
-.modal-footer {
-    padding: 1.5rem;
-    background-color: white;
-    display: flex;
-    justify-content: flex-end;
-    gap: 1rem;
-    border-top: 1px solid #eee;
-    position: sticky;
-    bottom: 0;
-    z-index: 10;
-}
-
-.btn {
-    padding: 0.6rem 1.5rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    transition: opacity 0.2s;
-}
-
-.btn-secondary {
-    background-color: transparent;
-    border: 1px solid var(--secondary-grey);
-    color: #888;
-}
-
-    .btn-secondary:hover {
-        border-color: var(--dusty-rose);
-        color: var(--dusty-rose);
-    }
-
-.btn-primary {
-    background-color: var(--primary-rose);
-    color: white;
-}
-
-    .btn-primary:hover {
-        opacity: 0.9;
-    }
-
-.btn-danger {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-}
-
-    .btn-danger:hover {
-        background-color: #c82333;
-    }
-
-/* --- RESPONSIVE MEDIA QUERIES --- */
 @media (max-width: 768px) {
     .sidebar-custom {
         position: fixed;
@@ -816,8 +753,6 @@ body {
 
     .expense-amount-display {
         align-self: flex-end;
-        display: flex;
-        align-items: center;
     }
 
     .top-bar {
@@ -844,7 +779,6 @@ body {
     backdrop-filter: blur(2px);
 }
 
-/* --- PRINT STYLES (For PDF Export) --- */
 @media print {
     body, .expenditure-container, .main-content {
         height: auto !important;

@@ -73,5 +73,5 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Deb
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.pack.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\ref\project.Shared.dll
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-eugwmoh9l3-eugwmoh9l3.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-eugwmoh9l3-eugwmoh9l3.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-krvsjtpbpv-krvsjtpbpv.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-krvsjtpbpv-krvsjtpbpv.gz
