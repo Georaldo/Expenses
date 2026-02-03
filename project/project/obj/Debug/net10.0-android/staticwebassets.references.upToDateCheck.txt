@@ -1,0 +1,2 @@
+C:\Users\ebiso\OneDrive\Desktop\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Desktop\project\project.Shared\obj\Debug\net10.0\staticwebassets.build.json

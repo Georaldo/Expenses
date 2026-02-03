@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="project.Shared/project.Shared.csproj" />
+  <Project Path="project.Web/project.Web.csproj" />
+  <Project Path="project/project.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
