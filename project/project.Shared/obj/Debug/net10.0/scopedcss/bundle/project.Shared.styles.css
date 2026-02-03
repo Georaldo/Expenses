@@ -21,7 +21,7 @@
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem; /* Reduced gap from 2rem */
+    gap: 0.5rem; /* Reduced gap further to tighten layout */
     border-right: 1px solid var(--secondary-grey);
     flex-shrink: 0;
     transition: transform 0.3s ease-in-out;
@@ -52,7 +52,7 @@
     font-size: 2.5rem;
     font-weight: 800;
     color: var(--primary-rose);
-    margin: 0 0 1rem 0;
+    margin: 0 0 0.5rem 0; /* Reduced bottom margin */
     line-height: 1;
     letter-spacing: -1px;
     flex-shrink: 0;
@@ -128,15 +128,16 @@
         }
 
 .category-item[b-40ejhd7m0k] {
-    padding: 0.4rem 0.6rem; /* Compact padding to reduce size */
-    margin-bottom: 0.25rem; /* Reduced margin */
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.25rem;
     cursor: pointer;
     border-radius: 8px;
     transition: all 0.2s ease;
     background-color: rgba(255,255,255,0.3);
     display: flex;
     align-items: center;
-    gap: 10px; /* Reduced gap */
+    gap: 10px;
+    font-size: 0.9rem; /* Make text size consistent and compact */
 }
 
     .category-item:hover[b-40ejhd7m0k] {
@@ -165,7 +166,7 @@
 
 .cat-icon[b-40ejhd7m0k],
 [b-40ejhd7m0k] .cat-icon {
-    width: 20px; /* Smaller icon size */
+    width: 20px;
     height: 20px;
     flex-shrink: 0;
     stroke: var(--icon-gold);
@@ -179,10 +180,10 @@
 }
 
 .cat-amount[b-40ejhd7m0k] {
-    font-size: 0.75rem; /* Smaller font for amount */
+    font-size: 0.75rem;
     font-weight: normal;
     opacity: 0.8;
-    margin-top: 4px; /* Added spacing between name and amount */
+    margin-top: 4px;
 }
 
 .category-separator[b-40ejhd7m0k] {

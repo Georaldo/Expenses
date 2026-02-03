@@ -48,17 +48,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dLjmWc4YRAp7XkxEmYm7/xV1ebW\u002BYQ0LrlrrKVB8kXY="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"589893"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022dLjmWc4YRAp7XkxEmYm7/xV1ebW\u002BYQ0LrlrrKVB8kXY=\u0022"},{"Name":"Last-Modified","Value":"Wed, 28 Jan 2026 02:01:51 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.krvsjtpbpv.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.4sa0sv948i.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.4sa0sv948i.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-0GY6\u002ByN7Mt0TeltD\u002BjuAcgGHOo9wqvtijM/y7iA9ds8="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"18834"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220GY6\u002ByN7Mt0TeltD\u002BjuAcgGHOo9wqvtijM/y7iA9ds8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Feb 2026 06:32:22 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"4sa0sv948i"},{"Name":"integrity","Value":"sha256-lD6IDx5wzVs5s8qtVRBpTD3V75/ygXlUGkyknO3upPc="},{"Name":"label","Value":"_content/project.Shared/project.Shared.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"18774"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022lD6IDx5wzVs5s8qtVRBpTD3V75/ygXlUGkyknO3upPc=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Feb 2026 06:40:27 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.krvsjtpbpv.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.krvsjtpbpv.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.4sa0sv948i.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"krvsjtpbpv"},{"Name":"integrity","Value":"sha256-0GY6\u002ByN7Mt0TeltD\u002BjuAcgGHOo9wqvtijM/y7iA9ds8="},{"Name":"label","Value":"_content/project.Shared/project.Shared.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"18834"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00220GY6\u002ByN7Mt0TeltD\u002BjuAcgGHOo9wqvtijM/y7iA9ds8=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Feb 2026 06:32:22 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-lD6IDx5wzVs5s8qtVRBpTD3V75/ygXlUGkyknO3upPc="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"18774"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022lD6IDx5wzVs5s8qtVRBpTD3V75/ygXlUGkyknO3upPc=\u0022"},{"Name":"Last-Modified","Value":"Tue, 03 Feb 2026 06:40:27 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>
