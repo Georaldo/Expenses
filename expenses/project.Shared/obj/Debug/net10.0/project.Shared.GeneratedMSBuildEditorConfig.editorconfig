@@ -11,33 +11,37 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows,browser
 build_property.RootNamespace = project.Shared
 build_property.RootNamespace = project.Shared
-build_property.ProjectDir = C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared\
+build_property.ProjectDir = C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\project\project.Shared
+build_property.MSBuildProjectDirectory = C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/project/project.Shared/Layout/EmptyLayout.razor]
+[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/expenses/project.Shared/Layout/EmptyLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = TGF5b3V0XEVtcHR5TGF5b3V0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/project/project.Shared/Pages/NotFound.razor]
+[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/expenses/project.Shared/Pages/NotFound.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTm90Rm91bmQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/project/project.Shared/Routes.razor]
+[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/expenses/project.Shared/Routes.razor]
 build_metadata.AdditionalFiles.TargetPath = Um91dGVzLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/project/project.Shared/_Imports.razor]
+[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/expenses/project.Shared/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/project/project.Shared/Pages/Expenses.razor]
+[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/expenses/project.Shared/Pages/Expenses.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXhwZW5zZXMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-40ejhd7m0k
+
+[C:/Users/ebiso/OneDrive/Documents/GitHub/Expenses/expenses/project.Shared/Pages/Menu.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-ihjg8pvgj5

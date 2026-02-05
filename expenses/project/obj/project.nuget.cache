@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JSu9JJZcZ0E=",
+  "dgSpecHash": "lYoidTa90Qs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\project\\project\\project.csproj",
+  "projectFilePath": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project\\project.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ebiso\\.nuget\\packages\\googlegson\\2.13.1.1\\googlegson.2.13.1.1.nupkg.sha512",
     "C:\\Users\\ebiso\\.nuget\\packages\\microsoft.aspnetcore.authorization\\10.0.0\\microsoft.aspnetcore.authorization.10.0.0.nupkg.sha512",
