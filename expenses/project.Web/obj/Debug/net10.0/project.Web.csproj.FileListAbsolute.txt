@@ -1,12 +1,3 @@
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.AssemblyInfoInputs.cache
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.AssemblyInfo.cs
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.csproj.CoreCompileInputs.cache
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.sourcelink.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug\net10.0\project.Shared.staticwebassets.runtime.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug\net10.0\project.Shared.staticwebassets.endpoints.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug\net10.0\appsettings.Development.json
@@ -20,7 +11,16 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug\net10.0\project.Web.pdb
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug\net10.0\project.Shared.dll
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\bin\Debug\net10.0\project.Shared.pdb
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\EmbeddedAttribute.cs
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\ValidatableTypeAttribute.cs
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.csproj.AssemblyReference.cache
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.AssemblyInfoInputs.cache
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.AssemblyInfo.cs
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.csproj.CoreCompileInputs.cache
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.sourcelink.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\rjimswa.dswa.cache.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
@@ -30,6 +30,7 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\compressed\oqqh2ohwmm-{0}-13ja33weya-13ja33weya.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\compressed\ukatbi7tmj-{0}-2i0r6wwb69-2i0r6wwb69.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\compressed\sv2g3qn2et-{0}-iz83ucvm53-iz83ucvm53.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\compressed\puugjg9czi-{0}-es7mctrpzk-es7mctrpzk.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\compressed\cs7cowslas-{0}-bs7r4n8dzb-bs7r4n8dzb.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\staticwebassets.build.json.cache
@@ -43,4 +44,3 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.pdb
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\project.Web.genruntimeconfig.cache
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\ref\project.Web.dll
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Web\obj\Debug\net10.0\compressed\puugjg9czi-{0}-vlqlzyu022-vlqlzyu022.gz

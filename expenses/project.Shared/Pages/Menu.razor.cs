@@ -17,7 +17,7 @@ namespace project.Shared.Pages
 
         // --- State ---
         private string SelectedView { get; set; } = "Product"; // Default view
-        private string SelectedSec { get; set; } = "All"; // Renamed from SelectedSection
+        private string SelectedSec { get; set; } = "All";
 
         // Sidebar State
         private bool IsSidebarOpen { get; set; } = false;
@@ -54,7 +54,6 @@ namespace project.Shared.Pages
         // --- Data Models ---
         private MenuItem NewItem { get; set; } = new MenuItem();
 
-        // Helper property to check if we are editing an existing item
         private bool IsEditing => MenuDb.Any(e => e.Id == NewItem.Id);
 
         // Main Categories
@@ -94,15 +93,13 @@ namespace project.Shared.Pages
             MenuDb.Add(new MenuItem { ItemType = "Product", MenuCategory = "Desserts", SubCategory = "Cakes", Station = "Bakery", ItemName = "Chocolate Lava Cake", Price = 18.00m, Description = "Served with vanilla ice cream", IsAvailable = false });
             MenuDb.Add(new MenuItem { ItemType = "Product", MenuCategory = "Appetizers", SubCategory = "Salads", Station = "Cold Kitchen", ItemName = "Caesar Salad", Price = 16.50m, Description = "Romaine lettuce, croutons, parmesan", IsAvailable = true });
 
-            // Service Items (Dummy data)
+            // Service Items
             MenuDb.Add(new MenuItem { ItemType = "Service", MenuCategory = "Specials", SubCategory = "", Station = "Bar", ItemName = "Table Service", Price = 0.00m, Description = "Standard table service", IsAvailable = true });
 
-            // Package Items (Dummy data)
+            // Package Items
             MenuDb.Add(new MenuItem { ItemType = "Package", MenuCategory = "Mains", SubCategory = "", Station = "Hot Kitchen", ItemName = "Lunch Set A", Price = 35.00m, Description = "Burger + Drink + Fries", IsAvailable = true });
         }
 
-        // Logic to get distinct sections (categories) available for the current View
-        // Renamed AvailableSections -> AvailableSecs
         private IEnumerable<string> AvailableSecs => MenuDb
             .Where(x => x.ItemType == SelectedView)
             .Select(x => x.MenuCategory)
@@ -116,21 +113,17 @@ namespace project.Shared.Pages
             {
                 var query = MenuDb.Where(x => x.ItemType == SelectedView);
 
-                // Filter by Section Button (All vs Specific Category)
-                // Renamed SelectedSection -> SelectedSec
                 if (SelectedSec != "All")
                 {
                     query = query.Where(e => e.MenuCategory == SelectedSec);
                 }
 
-                // Apply Dropdown Filters
                 if (!string.IsNullOrEmpty(FilterStation))
                     query = query.Where(e => e.Station == FilterStation);
 
                 if (!string.IsNullOrEmpty(FilterSearchQuery))
                     query = query.Where(e => e.ItemName.Contains(FilterSearchQuery, StringComparison.OrdinalIgnoreCase) || (e.Description != null && e.Description.Contains(FilterSearchQuery, StringComparison.OrdinalIgnoreCase)));
 
-                // Apply Sort
                 switch (SortOption)
                 {
                     case "NameAsc": return query.OrderBy(e => e.ItemName);
@@ -142,13 +135,13 @@ namespace project.Shared.Pages
             }
         }
 
-        // Filtered Station Logic
         private IEnumerable<StationItem> FilteredStations => string.IsNullOrWhiteSpace(_stationSearchQuery)
             ? StationList
             : StationList.Where(s => s.Name.Contains(_stationSearchQuery, StringComparison.OrdinalIgnoreCase) ||
                                    s.Type.Contains(_stationSearchQuery, StringComparison.OrdinalIgnoreCase));
 
         // --- HELPER: Icons ---
+        // Added explicit width/height to prevent huge icons when CSS fails to load
         private string GetIconForCategory(string category)
         {
             string path = "";
@@ -162,18 +155,17 @@ namespace project.Shared.Pages
                 case "Specials": path = "<polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'></polygon>"; break;
                 default: path = "<circle cx='12' cy='12' r='10'></circle>"; break;
             }
-            return $"<svg class='cat-icon' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>{path}</svg>";
+            return $"<svg class='cat-icon' width='20' height='20' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'>{path}</svg>";
         }
 
         // --- Main Actions ---
         private void SelectView(string viewName)
         {
             SelectedView = viewName;
-            SelectedSec = "All"; // Reset sec filter when switching views
+            SelectedSec = "All";
             if (IsSidebarOpen) IsSidebarOpen = false;
         }
 
-        // Renamed SelectSection -> SelectSec
         private void SelectSec(string sec)
         {
             SelectedSec = sec;

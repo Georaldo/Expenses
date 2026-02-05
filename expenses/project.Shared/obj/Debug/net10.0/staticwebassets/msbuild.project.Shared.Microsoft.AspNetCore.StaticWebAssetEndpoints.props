@@ -48,17 +48,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-dLjmWc4YRAp7XkxEmYm7/xV1ebW\u002BYQ0LrlrrKVB8kXY="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"589893"},{"Name":"Content-Type","Value":"text/plain"},{"Name":"ETag","Value":"\u0022dLjmWc4YRAp7XkxEmYm7/xV1ebW\u002BYQ0LrlrrKVB8kXY=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Feb 2026 06:47:15 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.vnq2rl9lmx.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.9vq151xoug.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.9vq151xoug.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-hc0NGN\u002Bc2mPkkyvjiFo04oamW/8aGLYyg26fQbqPTcI="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"37292"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022hc0NGN\u002Bc2mPkkyvjiFo04oamW/8aGLYyg26fQbqPTcI=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Feb 2026 08:18:28 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"9vq151xoug"},{"Name":"integrity","Value":"sha256-RRfhaWbPQFFsWwgv81dWFOou0PqVKMMqiUlIvLvTV/Y="},{"Name":"label","Value":"_content/project.Shared/project.Shared.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"37976"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RRfhaWbPQFFsWwgv81dWFOou0PqVKMMqiUlIvLvTV/Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Feb 2026 09:38:48 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.vnq2rl9lmx.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.vnq2rl9lmx.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/project.Shared/project.Shared.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\project.Shared.9vq151xoug.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"vnq2rl9lmx"},{"Name":"integrity","Value":"sha256-hc0NGN\u002Bc2mPkkyvjiFo04oamW/8aGLYyg26fQbqPTcI="},{"Name":"label","Value":"_content/project.Shared/project.Shared.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"37292"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022hc0NGN\u002Bc2mPkkyvjiFo04oamW/8aGLYyg26fQbqPTcI=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Feb 2026 08:18:28 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-RRfhaWbPQFFsWwgv81dWFOou0PqVKMMqiUlIvLvTV/Y="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"37976"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022RRfhaWbPQFFsWwgv81dWFOou0PqVKMMqiUlIvLvTV/Y=\u0022"},{"Name":"Last-Modified","Value":"Thu, 05 Feb 2026 09:38:48 GMT"},{"Name":"Vary","Value":"Accept-Encoding"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
   </ItemGroup>
 </Project>

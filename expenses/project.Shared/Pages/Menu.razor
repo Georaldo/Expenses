@@ -1,9 +1,9 @@
-﻿@page "/"
+﻿@page "/menu"
 @layout project.Shared.Layout.EmptyLayout
 @using project.Shared.Model
 @using project.Shared.Pages
 
-<!-- Reuse the global style override for layout consistency -->
+<!-- Layout-specific body override to prevent scrolling issues -->
 <style>
     body {
         margin: 0;
@@ -164,7 +164,7 @@
                     </div>
                 }
 
-                <!-- SEC BUTTONS ROW (Renamed from SECTION to avoid reserved word conflict) -->
+                <!-- SEC BUTTONS ROW -->
                 <div class="secs-scroll-area">
                     <button class="sec-btn @(SelectedSec == "All" ? "active" : "")" @onclick='() => SelectSec("All")'>All</button>
 

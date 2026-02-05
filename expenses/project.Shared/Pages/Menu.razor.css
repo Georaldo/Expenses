@@ -11,6 +11,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--text-dark);
     position: relative;
+    overflow: hidden; /* Prevent body scroll when sidebar moves */
 }
 
 /* --- LEFT SIDEBAR --- */
@@ -23,11 +24,20 @@
     gap: 0.5rem;
     border-right: 1px solid var(--secondary-grey);
     flex-shrink: 0;
-    transition: transform 0.3s ease-in-out;
+    transition: margin-left 0.3s ease-in-out, transform 0.3s ease-in-out;
     z-index: 100;
     height: 100vh;
     overflow: hidden;
+    /* Desktop Default: Relative in Flex flow so it pushes content (Side-by-Side) */
+    position: relative;
+    margin-left: 0; /* Default OPEN on Desktop */
 }
+
+    /* Desktop Toggle Logic: When .open class is added (via button click), HIDE sidebar.
+   This effectively uses the toggle button to 'close' the sidebar on desktop. */
+    .sidebar-custom.open {
+        margin-left: -280px;
+    }
 
 .close-sidebar-btn {
     background: none;
@@ -39,7 +49,7 @@
     align-items: center;
     justify-content: flex-start;
     width: fit-content;
-    margin-bottom: -1rem;
+    margin-bottom: 1rem;
 }
 
     .close-sidebar-btn:hover {
@@ -131,6 +141,8 @@
     flex-direction: column;
     overflow-y: auto;
     position: relative;
+    width: auto;
+    min-width: 0;
 }
 
 .top-bar {
@@ -152,7 +164,7 @@
 }
 
 .mobile-menu-btn {
-    display: none;
+    display: block; /* Visible on desktop to allow closing the sidebar */
     background: none;
     border: none;
     color: var(--icon-gold);
@@ -171,7 +183,7 @@
     color: #888;
 }
 
-/* NEW ACTION BAR LAYOUT */
+/* ACTION BAR */
 .action-bar-container {
     background-color: white;
     border-bottom: 1px solid var(--secondary-grey);
@@ -234,7 +246,7 @@
     cursor: pointer;
     color: #666;
     transition: all 0.2s;
-    flex-shrink: 0; /* Prevent icons from shrinking */
+    flex-shrink: 0;
 }
 
     .icon-btn-square:hover, .icon-btn-square.active {
@@ -247,14 +259,14 @@
         stroke-width: 2px;
     }
 
-/* SECTION SCROLL AREA */
+/* SCROLL AREA */
 .secs-scroll-area {
     display: flex;
     gap: 0.8rem;
     overflow-x: auto;
     padding-bottom: 5px;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
     .secs-scroll-area::-webkit-scrollbar {
@@ -277,7 +289,6 @@
     .sec-btn:hover {
         background-color: var(--off-white-bg);
         border-color: var(--primary-rose);
-        color: var(--primary-rose);
     }
 
     .sec-btn.active {
@@ -578,6 +589,8 @@
 .upload-subtext {
     font-size: 0.8rem;
     color: #888;
+    display: block;
+    margin-top: 2px;
 }
 
 .upload-option-btn {
@@ -683,48 +696,68 @@
     margin-top: 2px;
 }
 
+/* Hide overlay on desktop by default to avoid blur/block */
+.sidebar-overlay {
+    display: none;
+}
+
 @media (max-width: 768px) {
+    /* MOBILE Styles */
     .sidebar-custom {
         position: fixed;
         left: 0;
         top: 0;
         bottom: 0;
+        margin-left: 0;
         transform: translateX(-100%);
-        box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        z-index: 2000;
     }
 
+        /* Standard mobile logic: .open class slides it in */
         .sidebar-custom.open {
             transform: translateX(0);
+            margin-left: 0; /* Override desktop toggle logic for mobile */
         }
 
-    .mobile-menu-btn {
+    /* Show overlay on mobile when sidebar is open */
+    .sidebar-overlay {
         display: block;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+        z-index: 99;
+        backdrop-filter: blur(2px);
+    }
+
+    .mobile-menu-btn {
+        display: block; /* Visible on mobile */
     }
 
     .action-bar-container {
-        padding: 1rem; /* Reduce padding on mobile */
+        padding: 1rem;
     }
 
     .filters-bar {
-        /* Keep on same line */
         flex-direction: row;
         flex-wrap: nowrap;
         gap: 0.5rem;
     }
 
-        /* Force search bar to shrink but not too much, other icons stay fixed size */
         .filters-bar > div:first-child {
             flex: 1;
-            min-width: 0; /* Allows shrinking below content size */
+            min-width: 0;
         }
 
     .search-filter-control {
         width: 100%;
-        min-width: 0; /* Override previous min-width */
+        min-width: 0;
     }
 
     .icon-btn-square {
-        width: 36px; /* Slightly smaller buttons on mobile */
+        width: 36px;
         height: 36px;
     }
 
@@ -760,17 +793,6 @@
     .content-area {
         padding: 1rem;
     }
-}
-
-.sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 99;
-    backdrop-filter: blur(2px);
 }
 
 @media print {
