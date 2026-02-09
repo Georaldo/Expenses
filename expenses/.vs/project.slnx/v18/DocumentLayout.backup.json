@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\menu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\menu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\menu.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\menu.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\menu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\menu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\menu.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\menu.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\menu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\menu.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\model\\menumodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,8 +25,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 9,
+          "DockedWidth": 246,
+          "SelectedChildIndex": 29,
           "Children": [
             {
               "$type": "Bookmark",
@@ -61,6 +61,82 @@
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
             },
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:131:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:134:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:136:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:133:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:135:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:138:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:139:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:140:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:142:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:137:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:141:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "MenuModels.cs",
@@ -68,34 +144,36 @@
               "RelativeDocumentMoniker": "project.Shared\\Model\\MenuModels.cs",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Model\\MenuModels.cs",
               "RelativeToolTip": "project.Shared\\Model\\MenuModels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA8AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T07:07:20.754Z"
+              "WhenOpened": "2026-02-05T07:07:20.754Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Menu.razor.css",
               "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor.css",
               "RelativeDocumentMoniker": "project.Shared\\Pages\\Menu.razor.css",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor.css",
               "RelativeToolTip": "project.Shared\\Pages\\Menu.razor.css",
-              "ViewState": "AgIAAPgCAAAAAAAAAAAiwDoDAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGQBAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2026-02-05T06:58:44.051Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "Menu.razor.cs",
               "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor.cs",
               "RelativeDocumentMoniker": "project.Shared\\Pages\\Menu.razor.cs",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor.cs",
               "RelativeToolTip": "project.Shared\\Pages\\Menu.razor.cs",
-              "ViewState": "AgIAAGoBAAAAAAAAAAAUwJUBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAEUCAAAAAAAAAAAqwFACAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-05T06:58:00.059Z"
+              "WhenOpened": "2026-02-05T06:58:00.059Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -105,10 +183,28 @@
               "RelativeDocumentMoniker": "project.Shared\\Pages\\Menu.razor",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor",
               "RelativeToolTip": "project.Shared\\Pages\\Menu.razor",
-              "ViewState": "AgIAAJ0BAAAAAAAAAAAgwNQBAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAAIADAAAAAAAAAAAUwI0DAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-02-05T06:58:00.644Z",
               "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 154,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b2375e54-d885-3426-9cf9-ca48e71a58bc}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
             }
           ]
         },
@@ -118,7 +214,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+              "Name": "ST:0:0:{fbcae063-e2c0-4ab1-a516-996ea3dafb72}"
             }
           ]
         }
