@@ -3,3 +3,4 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\De
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json

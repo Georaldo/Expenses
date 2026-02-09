@@ -1,0 +1,758 @@
+﻿@using project.Shared.Model
+@using project.Shared.Pages
+
+<!-- SECTION SETTINGS MODE -->
+@if (IsSectionSettingsMode)
+{
+    <div class="top-bar">
+        <div class="top-bar-left">
+            @if (IsAddSectionMode)
+            {
+                <div class="page-title">
+                    <h2>@(IsEditSectionMode ? "Edit Section" : "Add Section")</h2>
+                    <span>Management</span>
+                </div>
+            }
+            else
+            {
+                <button class="mobile-menu-btn" @onclick="GoBackToMain">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <div class="page-title">
+                    <h2>Service - Section</h2>
+                    <span>Management</span>
+                </div>
+            }
+        </div>
+
+        @if (!IsAddSectionMode)
+        {
+            <button class="add-btn" @onclick="OpenAddSectionMode" title="Add New Section">+</button>
+        }
+        else
+        {
+            <div style="display: flex; gap: 8px;">
+                <button class="btn btn-secondary" style="border-radius: 20px; padding: 0.5rem 1rem;" @onclick="CloseAddSectionMode">Cancel</button>
+                <button class="btn btn-primary" style="border-radius: 20px; padding: 0.5rem 1.5rem;" @onclick="SaveSection">Save</button>
+            </div>
+        }
+    </div>
+
+    <div class="content-area">
+        @if (IsAddSectionMode)
+        {
+            <!-- ADD SECTION FORM -->
+            <div class="add-mode-container" style="background: white; border-radius: 12px; padding: 2rem;">
+                <div class="form-section">
+                    <div class="form-group">
+                        <label>Section Name</label>
+                        <input type="text" class="form-control" @bind="NewSection.Name" placeholder="e.g. Mains" />
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Title</label>
+                        <input type="text" class="form-control" @bind="NewSection.AdditionalTitle" placeholder="e.g. Popular Items" />
+                    </div>
+
+                    <!-- Reward Toggle -->
+                    <div class="form-group">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <label style="margin-bottom: 0;">Collection Reward</label>
+                            <label class="switch">
+                                <input type="checkbox" checked="@NewSection.IsCollectionRewardEnabled" @onchange="ToggleCollectionReward">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <span class="input-description">Set how much Credit/Point reward toward your customer upon Payment</span>
+                    </div>
+
+                    @if (NewSection.IsCollectionRewardEnabled)
+                    {
+                        <div style="margin-top: 1rem; display: flex; flex-direction: column; gap: 1rem;">
+                            <!-- Credit Reward Input -->
+                            <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin: 0; flex: 1;">@(NewSection.IsReverseRate ? "Collection per 1.00 Credit" : "Credit per 1.00 Collection")</label>
+                                <div style="position: relative; width: 150px;">
+                                    <div class="form-control clickable" @onclick='() => OpenAmountPopup("CreditReward")' style="padding-right: 2.5rem; text-align: right;">
+                                        <span style="color: var(--primary-rose); font-weight: bold;">@NewSection.CreditPerCollection.ToString("N2")</span>
+                                    </div>
+                                    <button class="icon-btn-square" @onclick="ToggleReverseRate" style="border: none; background: transparent; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary-rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Point Reward Input -->
+                            <div class="form-group" style="display: flex; align-items: center; justify-content: space-between;">
+                                <label style="margin: 0; flex: 1;">@(NewSection.IsReverseRate ? "Collection per 1 Point" : "Point per 1.00 Collection")</label>
+                                <div style="position: relative; width: 150px;">
+                                    <div class="form-control clickable" @onclick='() => OpenAmountPopup("PointReward")' style="padding-right: 2.5rem; text-align: right;">
+                                        <span style="color: var(--primary-rose); font-weight: bold;">@NewSection.PointPerCollection.ToString("N2")</span>
+                                    </div>
+                                    <button class="icon-btn-square" @onclick="ToggleReverseRate" style="border: none; background: transparent; position: absolute; right: 2px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px;">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary-rose)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"></polyline><path d="M3 11V9a4 4 0 0 1 4-4h14"></path><polyline points="7 23 3 19 7 15"></polyline><path d="M21 13v2a4 4 0 0 1-4 4H3"></path></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+        else
+        {
+            <!-- SECTION LIST -->
+            <div style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+                Organize SKUs by Section and Folder for better tracking. Sections or Folders with no SKUs will be hidden
+            </div>
+            <div class="service-list">
+                @foreach (var sec in SectionsDb)
+                {
+                    <div class="service-card" @onclick="() => OpenEditSectionMode(sec)" style="cursor: pointer;">
+                        <div class="service-card-icon" style="background: #eef2ff; color: #6366f1;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                        </div>
+                        <div class="service-details">
+                            <div class="service-title">@sec.Name</div>
+                            <div class="service-meta">
+                                <span>@sec.FolderCount Folders</span>
+                                <span>• @sec.SkuCount SKUs</span>
+                                <span>• @sec.Code</span>
+                            </div>
+                        </div>
+                        <button class="action-btn" title="Edit" @onclick:stopPropagation="true" @onclick="() => OpenEditSectionMode(sec)">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </button>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+else
+{
+    <!-- NORMAL MENU/PRODUCT VIEW -->
+    <div class="top-bar">
+        <div class="top-bar-left">
+            <button class="mobile-menu-btn" @onclick="TriggerToggleSidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+
+            <div class="page-title">
+                <h2>@(IsAddMode ? $"Add {ViewType}" : ViewType)</h2>
+                <span>Management</span>
+            </div>
+        </div>
+
+        @if (!IsAddMode)
+        {
+            <button class="add-btn" @onclick="OpenAddServiceMode" title="Add New Item">
+                +
+            </button>
+        }
+        else
+        {
+            <div style="display: flex; gap: 8px;">
+                <button class="btn btn-secondary" style="border-radius: 20px; padding: 0.5rem 1rem;" @onclick="CloseAddMode">Cancel</button>
+                <button class="btn btn-primary" style="border-radius: 20px; padding: 0.5rem 1.5rem;" @onclick="SaveItem">Save</button>
+            </div>
+        }
+    </div>
+
+    @if (!IsAddMode)
+    {
+        <!-- LIST VIEW -->
+        <div class="action-bar-container">
+            <div class="filters-bar">
+                <div style="position: relative; flex: 1; min-width: 200px;">
+                    <input type="text" class="search-filter-control" style="width: 100%; padding-left: 2.2rem;" placeholder="Search @ViewType..." @bind="FilterSearchQuery" @bind:event="oninput" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%);">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </div>
+
+                <button class="icon-btn-square @(IsFilterVisible ? "active" : "")" title="Filter" @onclick="ToggleFilterVisibility">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon></svg>
+                </button>
+
+                <button class="icon-btn-square" title="Download PDF" @onclick='() => DownloadReport("pdf")'>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="18" x2="12" y2="12"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>
+                </button>
+                <button class="icon-btn-square" title="Settings" @onclick="OpenSectionSettings">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </button>
+            </div>
+
+            <div class="secs-scroll-area">
+                <button class="sec-btn @(SelectedSec == "All" ? "active" : "")" @onclick='() => SelectSec("All")'>All</button>
+                @foreach (var sec in AvailableSecs)
+                {
+                    <button class="sec-btn @(SelectedSec == sec ? "active" : "")" @onclick='() => SelectSec(sec)'>@sec</button>
+                }
+            </div>
+        </div>
+
+        <div class="content-area">
+            <div class="service-list">
+                @foreach (var item in FilteredItems)
+                {
+                    <div class="service-card">
+                        @if (!string.IsNullOrEmpty(item.DisplayImageUrl))
+                        {
+                            <img src="@item.DisplayImageUrl" alt="@item.ItemName" class="service-card-icon" style="object-fit: fill; border: 1px solid #eee; background: #fff;" />
+                        }
+                        else
+                        {
+                            <div class="service-card-icon">@((MarkupString)GetIconForCategory(item.ServiceSection))</div>
+                        }
+
+                        <div class="service-details">
+                            <div class="service-title">@item.ItemName</div>
+                            <div class="service-meta" style="display: block;">
+                                <div>
+                                    <span>@item.ServiceSection</span>
+                                    @if (item.Duration.HasValue)
+                                    {
+                                        <span> • @item.Duration min</span>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-amount-display">
+                            <span>MYR @item.Price.ToString("N2")</span>
+                            <button class="action-btn info-btn" title="View Details" @onclick="() => ShowItemDetails(item)">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                            </button>
+                            <button class="action-btn delete-btn" @onclick="() => RequestDelete(item)" title="Delete Item">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
+                            </button>
+                        </div>
+                    </div>
+                }
+                @if (!FilteredItems.Any())
+                {
+                    <div class="empty-state">No items found for @ViewType.</div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <!-- ADD SERVICE INTERFACE -->
+        <div class="add-mode-container">
+            <!-- Top Image Adder -->
+            <div class="add-image-section">
+                <div class="image-placeholder" @onclick="() => IsUploadPopupOpen = true" style="@(!string.IsNullOrEmpty(_tempImagePreview) || !string.IsNullOrEmpty(NewItem.ServiceFolder) ? "border: none; padding: 0; overflow: hidden;" : "")">
+                    @if (!string.IsNullOrEmpty(_tempImagePreview))
+                    {
+                        <img src="@_tempImagePreview" alt="Service Image" style="width: 100%; height: 100%; object-fit: fill; border-radius: 12px;" />
+                    }
+                    else if (!string.IsNullOrEmpty(NewItem.DisplayImageUrl))
+                    {
+                        <img src="@NewItem.DisplayImageUrl" alt="Service Image" style="width: 100%; height: 100%; object-fit: fill; border-radius: 12px;" />
+                    }
+                    else if (string.IsNullOrEmpty(NewItem.ImageName))
+                    {
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        <span>Add Image</span>
+                    }
+                    else
+                    {
+                        <div style="font-weight: bold; color: var(--primary-rose);">@NewItem.ImageName</div>
+                        <span style="font-size: 0.8rem;">Click to change</span>
+                    }
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="add-tabs">
+                <button class="tab-btn @(ActiveAddTab == "Info" ? "active" : "")" @onclick='() => ActiveAddTab = "Info"'>Info</button>
+                <button class="tab-btn @(ActiveAddTab == "Advance" ? "active" : "")" @onclick='() => ActiveAddTab = "Advance"'>Advance</button>
+                <button class="tab-btn @(ActiveAddTab == "TC" ? "active" : "")" @onclick='() => ActiveAddTab = "TC"'>T&C</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content-area">
+                @if (ActiveAddTab == "Info")
+                {
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" class="form-control" @bind="NewItem.ItemName" placeholder="Service Name" />
+                        </div>
+                        <div class="form-group">
+                            <label>Section</label>
+                            <div class="form-control clickable" @onclick="() => IsCategoryPopupOpen = true">
+                                <span>@(string.IsNullOrEmpty(NewItem.ServiceSection) ? "Select Section" : NewItem.ServiceSection)</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Image URL (Folder)</label>
+                            <input type="text" class="form-control" @bind="NewItem.ServiceFolder" placeholder="Image Path/URL" readonly />
+                        </div>
+
+                        <div class="form-group">
+                            <label>Price (MYR)</label>
+                            <div class="form-control clickable" @onclick='() => OpenAmountPopup("Price")'>
+                                <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.Price.ToString("N2")</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Duration (Minutes)</label>
+                            <div class="form-control clickable" @onclick="OpenDurationPopup">
+                                <span>@(NewItem.Duration == null ? "Off" : $"{NewItem.Duration} min")</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (ActiveAddTab == "Advance")
+                {
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Barcode</label>
+                            <div class="form-control clickable" @onclick="() => IsBarcodePopupOpen = true">
+                                <span>@(string.IsNullOrEmpty(NewItem.Barcode) ? "Scan or Type Barcode" : NewItem.Barcode)</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto; color: #888;"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="8" y1="7" x2="8" y2="17"></line><line x1="12" y1="7" x2="12" y2="17"></line><line x1="16" y1="7" x2="16" y2="17"></line></svg>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
+                                <label style="margin-bottom: 0;">Price Range (Min - Max)</label>
+                                <label class="switch">
+                                    <input type="checkbox" checked="@IsMinMaxPriceEnabled" @onchange="ToggleMinMaxPrice">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="row-group">
+                                <div class="form-group" style="flex: 1;">
+                                    @if (IsMinMaxPriceEnabled)
+                                    {
+                                        <div class="form-control clickable" @onclick='() => OpenAmountPopup("MinPrice")' style="display: flex; align-items: center; justify-content: space-between;">
+                                            <span style="color: #888; font-weight: 500;">Min</span>
+                                            <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.MinPrice.ToString("N2")</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-control disabled" style="display: flex; align-items: center; justify-content: space-between;">
+                                            <span style="color: #aaa; font-weight: 500;">Min</span>
+                                            <span>N/A</span>
+                                        </div>
+                                    }
+                                </div>
+                                <div class="form-group" style="flex: 1;">
+                                    @if (IsMinMaxPriceEnabled)
+                                    {
+                                        <div class="form-control clickable" @onclick='() => OpenAmountPopup("MaxPrice")' style="display: flex; align-items: center; justify-content: space-between;">
+                                            <span style="color: #888; font-weight: 500;">Max</span>
+                                            <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.MaxPrice.ToString("N2")</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="form-control disabled" style="display: flex; align-items: center; justify-content: space-between;">
+                                            <span style="color: #aaa; font-weight: 500;">Max</span>
+                                            <span>N/A</span>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Outlet Availability</label>
+                            <div class="form-control clickable" @onclick="() => IsOutletPopupOpen = true">
+                                <span>@(SelectedOutletCodes.Any() ? $"{SelectedOutletCodes.Count} Selected" : "Select Outlets")</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto;"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Free Point</label>
+                            <div class="form-control clickable" @onclick='() => OpenAmountPopup("FreePoint")'>
+                                <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.FreePoint.ToString("N0")</span>
+                            </div>
+                            <span class="input-description">Free point is the point given to the customer when they buy this item.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label style="display: flex; justify-content: space-between; align-items: center;">
+                                Redeem Point
+                                <label class="switch">
+                                    <input type="checkbox" checked="@IsRedeemPointEnabled" @onchange="ToggleRedeemPoint">
+                                    <span class="slider round"></span>
+                                </label>
+                            </label>
+                            @if (IsRedeemPointEnabled)
+                            {
+                                <div class="form-control clickable" @onclick='() => OpenAmountPopup("RedeemPoint")'>
+                                    <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.RedeemPoint.ToString("N0")</span>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="form-control disabled"><span>N/A</span></div>
+                            }
+                            <span class="input-description">Redeem point is the point required to redeem this item.</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Bill of Material</label>
+                            <div class="form-control clickable" @onclick="OpenBomPopup">
+                                <span>@(!string.IsNullOrEmpty(NewItem.BillOfMaterial) ? $"{NewItem.BillOfMaterial.Split(',').Length} Product(s) Selected" : "0 Product Selected")</span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-left:auto;"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (ActiveAddTab == "TC")
+                {
+                    <div class="form-section">
+                        <div class="form-group">
+                            <label>Policy</label>
+                            <textarea class="form-control" @bind="NewItem.Policy" rows="3" placeholder="Policy details..."></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Term & Conditions 1</label>
+                            <input type="text" class="form-control" @bind="NewItem.TermCondition1" />
+                        </div>
+                        <div class="form-group">
+                            <label>Term & Conditions 2</label>
+                            <input type="text" class="form-control" @bind="NewItem.TermCondition2" />
+                        </div>
+                        <div class="form-group">
+                            <label>Term & Conditions 3</label>
+                            <input type="text" class="form-control" @bind="NewItem.TermCondition3" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
+
+<!-- ERROR POPUP -->
+@if (IsErrorPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2200;" @onclick="CloseErrorPopup">
+        <div class="modal-content" style="max-width: 350px; text-align: center; padding: 2rem;" @onclick:stopPropagation>
+            <div style="font-size: 3rem; margin-bottom: 1rem;">⚠️</div>
+            <h4 style="margin: 0 0 1rem 0; color: #333;">Missing Information</h4>
+            <p style="color: #666; margin-bottom: 2rem;">@ErrorMessage</p>
+            <button class="btn btn-primary" style="width: 100%;" @onclick="CloseErrorPopup">OK</button>
+        </div>
+    </div>
+}
+
+<!-- CALCULATOR POPUP -->
+@if (IsAmountPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsAmountPopupOpen = false">
+        <div class="modal-content" style="max-width: 350px;" @onclick:stopPropagation>
+            <div class="modal-header"><h3>Enter @(_calculatorTarget.Contains("Point") ? "Points" : "Amount")</h3><button class="close-btn" @onclick="() => IsAmountPopupOpen = false">&times;</button></div>
+            <div class="modal-body">
+                <div class="keypad-display">@_tempAmountString</div>
+                <div class="keypad-grid">
+                    <button class="keypad-btn" @onclick='() => AppendToAmount("1")'>1</button><button class="keypad-btn" @onclick='() => AppendToAmount("2")'>2</button><button class="keypad-btn" @onclick='() => AppendToAmount("3")'>3</button>
+                    <button class="keypad-btn" @onclick='() => AppendToAmount("4")'>4</button><button class="keypad-btn" @onclick='() => AppendToAmount("5")'>5</button><button class="keypad-btn" @onclick='() => AppendToAmount("6")'>6</button>
+                    <button class="keypad-btn" @onclick='() => AppendToAmount("7")'>7</button><button class="keypad-btn" @onclick='() => AppendToAmount("8")'>8</button><button class="keypad-btn" @onclick='() => AppendToAmount("9")'>9</button>
+                    <button class="keypad-btn" @onclick='() => AppendToAmount(".")'>.</button><button class="keypad-btn" @onclick='() => AppendToAmount("0")'>0</button><button class="keypad-btn" @onclick="BackspaceAmount">⌫</button>
+                </div>
+                <div style="margin-top: 1rem; display: flex; gap: 10px;">
+                    <button class="btn btn-secondary" style="flex: 1;" @onclick="ClearAmount">Clear</button>
+                    <button class="btn btn-primary" style="flex: 1;" @onclick="SaveAmount">Done</button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- DURATION POPUP -->
+@if (IsDurationPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsDurationPopupOpen = false">
+        <div class="modal-content" style="max-width: 400px;" @onclick:stopPropagation>
+            <div class="modal-header"><h3>Duration</h3><button class="close-btn" @onclick="() => IsDurationPopupOpen = false">&times;</button></div>
+            <div class="modal-body">
+                <div class="duration-grid">
+                    <button class="duration-btn @(NewItem.Duration == null ? "active" : "")" @onclick='() => SelectDuration(null)'><span>Off</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 15 ? "active" : "")" @onclick='() => SelectDuration(15)'><span>15 min</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 30 ? "active" : "")" @onclick='() => SelectDuration(30)'><span>30 min</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 45 ? "active" : "")" @onclick='() => SelectDuration(45)'><span>45 min</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 60 ? "active" : "")" @onclick='() => SelectDuration(60)'><span>1 hour</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 75 ? "active" : "")" @onclick='() => SelectDuration(75)'><span>1 hour</span><span>15 min</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 90 ? "active" : "")" @onclick='() => SelectDuration(90)'><span>1 hour</span><span>30 min</span></button>
+                    <button class="duration-btn @(NewItem.Duration == 105 ? "active" : "")" @onclick='() => SelectDuration(105)'><span>1 hour</span><span>45 min</span></button>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- BARCODE POPUP -->
+@if (IsBarcodePopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsBarcodePopupOpen = false">
+        <div class="modal-content" style="max-width: 350px; padding: 1.5rem;" @onclick:stopPropagation>
+            <div class="modal-header" style="background: none; border: none; padding: 0 0 1rem 0;"><h3>Scan Barcode</h3><button class="close-btn" @onclick="() => IsBarcodePopupOpen = false">&times;</button></div>
+
+            <div style="display: flex; flex-direction: column; gap: 1.5rem; text-align: center;">
+                <div class="scan-btn-placeholder" style="border: 2px dashed #ccc; padding: 2rem; border-radius: 12px; cursor: pointer;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="8" y1="7" x2="8" y2="17"></line><line x1="12" y1="7" x2="12" y2="17"></line><line x1="16" y1="7" x2="16" y2="17"></line></svg>
+                    <div style="margin-top: 0.5rem; color: #888; font-weight: 600;">Tap to Scan</div>
+                </div>
+
+                <div style="position: relative; display: flex; align-items: center; justify-content: center;">
+                    <span style="background: #fff; padding: 0 10px; color: #888; z-index: 1;">OR</span>
+                    <div style="position: absolute; height: 1px; background: #eee; width: 100%; top: 50%;"></div>
+                </div>
+
+                <div class="form-group" style="text-align: left;">
+                    <label>Type Manually</label>
+                    <textarea class="form-control" @bind="NewItem.Barcode" rows="2" placeholder="Enter barcode number..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%;" @onclick="() => IsBarcodePopupOpen = false">Done</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- OUTLET POPUP -->
+@if (IsOutletPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsOutletPopupOpen = false">
+        <div class="modal-content" style="max-width: 400px; max-height: 70vh; display: flex; flex-direction: column;" @onclick:stopPropagation>
+            <div class="modal-header"><h3>Select Outlet</h3><button class="close-btn" @onclick="() => IsOutletPopupOpen = false">&times;</button></div>
+            <div class="selection-list" style="flex: 1; overflow-y: auto;">
+                @foreach (var outlet in OutletList)
+                {
+                    <div class="outlet-row" @onclick="() => ToggleOutletSelection(outlet.Code)">
+                        <div class="custom-checkbox @(SelectedOutletCodes.Contains(outlet.Code) ? "checked" : "")">
+                            @if (SelectedOutletCodes.Contains(outlet.Code))
+                            {
+                                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            }
+                        </div>
+                        <div style="flex: 1;">
+                            <div style="font-weight: 600;">@outlet.Name</div>
+                            <div style="font-size: 0.85rem; color: #888;">@outlet.Code</div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div style="padding: 1rem; border-top: 1px solid #eee;">
+                <button class="btn btn-primary" style="width: 100%;" @onclick="() => IsOutletPopupOpen = false">Confirm</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- B.O.M. POPUP (Step 1: List) -->
+@if (IsBomPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => CloseBomPopup(false)">
+        <div class="modal-content" style="max-width: 400px; max-height: 70vh; display: flex; flex-direction: column;" @onclick:stopPropagation>
+            <div class="modal-header" style="justify-content: flex-start; padding: 1rem 1rem;">
+                <button class="close-btn header-action-btn" style="margin-right: auto;" @onclick="() => CloseBomPopup(false)">X</button>
+                <h3 style="flex: 1; text-align: center;">B.O.M</h3>
+                <button class="close-btn header-action-btn save-action" style="margin-left: auto;" @onclick="() => CloseBomPopup(true)">Save</button>
+            </div>
+
+            <div style="padding: 1rem; flex: 1; overflow-y: auto;">
+                @if (SelectedBomItems.Any())
+                {
+                    <div class="bom-list">
+                        @foreach (var item in SelectedBomItems)
+                        {
+                            <div class="bom-list-item">
+                                <div class="bom-img-placeholder">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                                </div>
+                                <div class="bom-details">
+                                    <div class="name">@item.ItemName</div>
+                                    <div class="price">MYR @item.Price.ToString("N2")</div>
+                                </div>
+                                <button class="action-btn delete-btn" @onclick="() => RemoveFromBom(item)" title="Remove">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                                </button>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <div class="empty-state" style="padding: 2rem;">No materials added yet.</div>
+                }
+            </div>
+            <div style="padding: 1rem; border-top: 1px solid #eee;">
+                <button class="btn btn-primary" style="width: 100%;" @onclick="OpenAddMaterialPopup">Add Material</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- B.O.M. ADD MATERIAL POPUP (Step 2: Selection) -->
+@if (IsAddMaterialPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2100;" @onclick="() => CloseAddMaterialPopup(false)">
+        <div class="modal-content" style="max-width: 450px; max-height: 80vh; display: flex; flex-direction: column;" @onclick:stopPropagation>
+            <div class="modal-header" style="justify-content: flex-start; padding: 1rem 1rem;">
+                <button class="close-btn header-action-btn" style="margin-right: auto;" @onclick="() => CloseAddMaterialPopup(false)">X</button>
+                <h3 style="flex: 1; text-align: center;">Select Product</h3>
+                <button class="close-btn header-action-btn save-action" style="margin-left: auto;" @onclick="() => CloseAddMaterialPopup(true)">Add</button>
+            </div>
+
+            <!-- Search & Sort Header -->
+            <div style="padding: 1rem; border-bottom: 1px solid #eee; background-color: #fff; position: relative;">
+                <div style="display: flex; gap: 0.5rem; margin-bottom: 0.8rem;">
+                    <div style="position: relative; flex: 1;">
+                        <input type="text" class="search-filter-control" style="width: 100%; padding-left: 2.2rem;" placeholder="Search..." @bind="BomSearchQuery" @bind:event="oninput" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 0.8rem; top: 50%; transform: translateY(-50%);">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                    </div>
+                    <button class="icon-btn-square" @onclick="ToggleBomSortMenu">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="21" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="21" y1="18" x2="3" y2="18"></line></svg>
+                    </button>
+                </div>
+
+                @if (IsBomSortMenuOpen)
+                {
+                    <div class="sort-menu" style="position: absolute; right: 1rem; top: 4rem; background: white; border: 1px solid #eee; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); z-index: 10; width: 150px;">
+                        <div style="padding: 0.8rem 1rem; cursor: pointer; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem;" @onclick='() => SelectBomSort("NameAsc")'>Name (A-Z)</div>
+                        <div style="padding: 0.8rem 1rem; cursor: pointer; border-bottom: 1px solid #f0f0f0; font-size: 0.9rem;" @onclick='() => SelectBomSort("PriceAsc")'>Price (Low-High)</div>
+                        <div style="padding: 0.8rem 1rem; cursor: pointer; font-size: 0.9rem;" @onclick='() => SelectBomSort("PriceDesc")'>Price (High-Low)</div>
+                    </div>
+                }
+
+                <div class="section-filter-scroll">
+                    <button class="sec-filter-btn @(BomSectionFilter == "All" ? "active" : "")" @onclick='() => SelectBomSection("All")'>All</button>
+                    @foreach (var cat in Categories)
+                    {
+                        <button class="sec-filter-btn @(BomSectionFilter == cat ? "active" : "")" @onclick='() => SelectBomSection(cat)'>@cat</button>
+                    }
+                </div>
+            </div>
+
+            <div style="flex: 1; overflow-y: auto; padding: 0.5rem;">
+                @foreach (var item in GetFilteredBomMaterials())
+                {
+                    <div class="bom-list-item" @onclick="() => AddToBom(item)" style="cursor: pointer;">
+                        <div class="bom-img-placeholder">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ccc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                        </div>
+                        <div class="bom-details">
+                            <div class="name">@item.ItemName</div>
+                            <div class="price">MYR @item.Price.ToString("N2")</div>
+                        </div>
+                        @if (SelectedBomItems.Any(x => x.Id == item.Id))
+                        {
+                            <span style="color: var(--icon-gold); font-size: 1.2rem; font-weight: bold;">✔</span>
+                        }
+                        else
+                        {
+                            <span style="color: var(--primary-rose); font-size: 1.5rem; font-weight: 300;">+</span>
+                        }
+                    </div>
+                }
+                @if (!GetFilteredBomMaterials().Any())
+                {
+                    <div class="empty-state" style="padding: 2rem;">No products found.</div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+<!-- MAIN FILTER POPUP -->
+@if (IsFilterPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsFilterPopupOpen = false">
+        <div class="modal-content" style="max-width: 400px;" @onclick:stopPropagation>
+            <div class="modal-header" style="justify-content: flex-start; padding: 1rem 1rem;">
+                <button class="close-btn header-action-btn" style="margin-right: auto;" @onclick="() => IsFilterPopupOpen = false">X</button>
+                <h3 style="flex: 1; text-align: center;">Filters</h3>
+                <button class="close-btn header-action-btn" style="margin-left: auto; color: #666; font-size: 0.9rem;" @onclick="ResetFilters">Reset</button>
+            </div>
+
+            <div class="modal-body" style="padding: 1.5rem;">
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="filter-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="font-weight: 600; color: #333;">Show Disabled Only</label>
+                        <label class="switch">
+                            <input type="checkbox" @bind="FilterShowDisabledOnly">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="filter-row" style="display: flex; justify-content: space-between; align-items: center;">
+                        <label style="font-weight: 600; color: #333;">Show Online Only</label>
+                        <label class="switch">
+                            <input type="checkbox" @bind="FilterShowOnlineOnly">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="font-weight: 600; color: #333; margin-bottom: 0.5rem; display: block;">Redeem Status</label>
+                        <div class="select-wrapper">
+                            <select class="form-control" @bind="FilterRedeemStatus" style="appearance: none;">
+                                <option value="All">All</option>
+                                <option value="Redeemable">Redeemable</option>
+                                <option value="Not Redeemable">Not Redeemable</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 2rem;" @onclick="() => IsFilterPopupOpen = false">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- CATEGORY POPUP -->
+@if (IsCategoryPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsCategoryPopupOpen = false">
+        <div class="modal-content" style="max-width: 400px;" @onclick:stopPropagation>
+            <div class="modal-header"><h3>Select Section</h3><button class="close-btn" @onclick="() => IsCategoryPopupOpen = false">&times;</button></div>
+            <div class="modal-body">
+                <div class="duration-grid" style="grid-template-columns: repeat(3, 1fr);">
+                    @foreach (var cat in Categories)
+                    {
+                        <button class="duration-btn @(NewItem.ServiceSection == cat ? "active" : "")" @onclick="() => SelectCategoryFromPopup(cat)">
+                            <span>@cat</span>
+                        </button>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<!-- IMAGE UPLOAD POPUP -->
+@if (IsUploadPopupOpen)
+{
+    <div class="modal-overlay" style="z-index: 2000;" @onclick="() => IsUploadPopupOpen = false">
+        <div class="modal-content" style="max-width: 320px; text-align: center; padding: 1.5rem;" @onclick:stopPropagation>
+            <h4 style="margin-top: 0; margin-bottom: 1.5rem;">Select Image Source</h4>
+            <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem;">
+                <label for="photoInput" class="upload-option-btn"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg><span>Gallery</span></label>
+                <label for="fileInput" class="upload-option-btn"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg><span>File</span></label>
+            </div>
+            <button class="btn btn-secondary" style="width: 100%; border-color: #ddd;" @onclick="() => IsUploadPopupOpen = false">Cancel</button>
+        </div>
+    </div>
+}
+
+<InputFile id="photoInput" OnChange="HandleFileSelected" style="display:none;" accept="image/*" />
+<InputFile id="fileInput" OnChange="HandleFileSelected" style="display:none;" />

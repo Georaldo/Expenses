@@ -38,5 +38,6 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\De
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\refint\project.Shared.dll
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\project.Shared.pdb
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\ref\project.Shared.dll
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-guowtbs6qj-guowtbs6qj.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-guowtbs6qj-guowtbs6qj.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\scopedcss\Pages\Service.razor.rz.scp.css
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-n1uppa26wb-n1uppa26wb.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-n1uppa26wb-n1uppa26wb.gz
