@@ -85,9 +85,17 @@
 
     <!-- RIGHT CONTENT -->
     <div class="main-content">
-        @if (new[] { "Service", "Product", "Package", "Discount" }.Contains(SelectedView))
+        @if (SelectedView == "Service")
         {
-            <!-- Render the separate Service component -->
+            <Service ViewType="Service" OnToggleSidebar="ToggleSidebar" />
+        }
+        else if (SelectedView == "Product")
+        {
+            <Product ViewType="Product" OnToggleSidebar="ToggleSidebar" />
+        }
+        else if (new[] { "Package", "Discount" }.Contains(SelectedView))
+        {
+            <!-- For now, route other known types to Service or Product as generic handler, or implement similarly -->
             <Service ViewType="@SelectedView" OnToggleSidebar="ToggleSidebar" />
         }
         else
