@@ -24,8 +24,6 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\De
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\6j9h0ux0hf-{0}-9acv3en18j-9acv3en18j.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\c1zdacf3az-{0}-08mtdlppm0-08mtdlppm0.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\17f3a959ic-{0}-ca434j9tb9-ca434j9tb9.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-cnrosviowv-cnrosviowv.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-cnrosviowv-cnrosviowv.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.development.json
@@ -42,3 +40,6 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\De
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\refint\project.Shared.dll
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\project.Shared.pdb
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\ref\project.Shared.dll
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\scopedcss\Pages\Package.razor.rz.scp.css
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-rtuiq64yx3-rtuiq64yx3.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-rtuiq64yx3-rtuiq64yx3.gz
