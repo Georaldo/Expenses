@@ -97,10 +97,9 @@
         {
             <Package ViewType="Package" OnToggleSidebar="ToggleSidebar" />
         }
-        else if (new[] { "Discount" }.Contains(SelectedView))
+        else if (SelectedView == "Discount")
         {
-            <!-- For now, route other known types to Service or Product as generic handler, or implement similarly -->
-            <Service ViewType="@SelectedView" OnToggleSidebar="ToggleSidebar" />
+            <Discount ViewType="Discount" OnToggleSidebar="ToggleSidebar" />
         }
         else
         {

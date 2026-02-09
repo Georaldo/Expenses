@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\service.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\service.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\product.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\product.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
@@ -11,20 +15,24 @@
       "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\package.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\package.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\package.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\discount.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\discount.razor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\package.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\package.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\discount.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\discount.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\model\\menumodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\model\\menumodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\discount.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\discount.razor.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\pages\\menu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\pages\\menu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|c:\\users\\ebiso\\onedrive\\documents\\github\\expenses\\expenses\\project.shared\\model\\menumodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D92F2F32-B89F-5526-FF32-A9A6F56B9642}|project.Shared\\project.Shared.csproj|solutionrelative:project.shared\\model\\menumodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -147,77 +155,103 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Product.razor",
-              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Product.razor",
-              "RelativeDocumentMoniker": "project.Shared\\Pages\\Product.razor",
-              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Product.razor",
-              "RelativeToolTip": "project.Shared\\Pages\\Product.razor",
-              "ViewState": "AgIAAAADAAAAAAAAAAAUwBoDAABWAAAAAAAAAA==",
+              "Title": "Service.razor",
+              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Service.razor",
+              "RelativeDocumentMoniker": "project.Shared\\Pages\\Service.razor",
+              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Service.razor",
+              "RelativeToolTip": "project.Shared\\Pages\\Service.razor",
+              "ViewState": "AgIAAL0CAAAAAAAAAAAAwOMCAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-09T09:26:19.975Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Package.razor.css",
-              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Package.razor.css",
-              "RelativeDocumentMoniker": "project.Shared\\Pages\\Package.razor.css",
-              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Package.razor.css",
-              "RelativeToolTip": "project.Shared\\Pages\\Package.razor.css",
-              "ViewState": "AgIAAAoDAAAAAAAAAAAkwEADAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2026-02-09T08:59:00.716Z",
+              "WhenOpened": "2026-02-09T10:00:14.783Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "Package.razor.cs",
-              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Package.razor.cs",
-              "RelativeDocumentMoniker": "project.Shared\\Pages\\Package.razor.cs",
-              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Package.razor.cs",
-              "RelativeToolTip": "project.Shared\\Pages\\Package.razor.cs",
-              "ViewState": "AgIAAGcBAAAAAAAAAAAgwLUBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-09T08:58:59.715Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "Package.razor",
               "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Package.razor",
               "RelativeDocumentMoniker": "project.Shared\\Pages\\Package.razor",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Package.razor",
               "RelativeToolTip": "project.Shared\\Pages\\Package.razor",
-              "ViewState": "AgIAAI0CAAAAAAAAAAAUwMACAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAHwCAAAAAAAAAAAAwMACAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-02-09T08:56:32.499Z",
+              "WhenOpened": "2026-02-09T09:54:18.733Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Product.razor",
+              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Product.razor",
+              "RelativeDocumentMoniker": "project.Shared\\Pages\\Product.razor",
+              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Product.razor",
+              "RelativeToolTip": "project.Shared\\Pages\\Product.razor",
+              "ViewState": "AgIAAPsCAAAAAAAAAAAAwAoDAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-09T09:54:12.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Discount.razor.css",
+              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Discount.razor.css",
+              "RelativeDocumentMoniker": "project.Shared\\Pages\\Discount.razor.css",
+              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Discount.razor.css",
+              "RelativeToolTip": "project.Shared\\Pages\\Discount.razor.css",
+              "ViewState": "AgIAAAUDAAAAAAAAAAAqwEADAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2026-02-09T09:29:05.659Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Discount.razor.cs",
+              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Discount.razor.cs",
+              "RelativeDocumentMoniker": "project.Shared\\Pages\\Discount.razor.cs",
+              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Discount.razor.cs",
+              "RelativeToolTip": "project.Shared\\Pages\\Discount.razor.cs",
+              "ViewState": "AgIAAEMBAAAAAAAAAAAkwJkBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-09T09:29:04.685Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "Discount.razor",
+              "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Discount.razor",
+              "RelativeDocumentMoniker": "project.Shared\\Pages\\Discount.razor",
+              "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Discount.razor",
+              "RelativeToolTip": "project.Shared\\Pages\\Discount.razor",
+              "ViewState": "AgIAACECAAAAAAAAAAAAwEoCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-02-09T09:29:03.65Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "MenuModels.cs",
               "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Model\\MenuModels.cs",
               "RelativeDocumentMoniker": "project.Shared\\Model\\MenuModels.cs",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Model\\MenuModels.cs",
               "RelativeToolTip": "project.Shared\\Model\\MenuModels.cs",
-              "ViewState": "AgIAAE0AAAAAAAAAAAAqwIEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFsAAAAAAAAAAAAqwKgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-09T06:36:40.892Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Menu.razor",
               "DocumentMoniker": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor",
               "RelativeDocumentMoniker": "project.Shared\\Pages\\Menu.razor",
               "ToolTip": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Shared\\Pages\\Menu.razor",
               "RelativeToolTip": "project.Shared\\Pages\\Menu.razor",
-              "ViewState": "AgIAADIAAAAAAAAAAAAAAH8AAAAGAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAAAH4AAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2026-02-05T06:58:00.644Z",
               "EditorCaption": ""

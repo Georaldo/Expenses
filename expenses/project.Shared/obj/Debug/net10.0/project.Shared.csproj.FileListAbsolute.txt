@@ -41,5 +41,6 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\De
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\project.Shared.pdb
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\ref\project.Shared.dll
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\scopedcss\Pages\Package.razor.rz.scp.css
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-rtuiq64yx3-rtuiq64yx3.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-rtuiq64yx3-rtuiq64yx3.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\scopedcss\Pages\Discount.razor.rz.scp.css
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-o06ym6xf9e-o06ym6xf9e.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-o06ym6xf9e-o06ym6xf9e.gz

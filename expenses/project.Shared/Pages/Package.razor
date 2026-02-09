@@ -104,10 +104,10 @@
         else
         {
             <!-- SECTION LIST -->
-            <div style="margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
+            <div style="padding: 1rem 1rem 0 1rem; margin-bottom: 1rem; color: #666; font-size: 0.9rem;">
                 Organize SKUs by Section and Folder for better tracking. Sections or Folders with no SKUs will be hidden
             </div>
-            <div class="product-list">
+            <div class="product-list" style="padding: 0 1rem 1rem 1rem;">
                 @foreach (var sec in SectionsDb)
                 {
                     <div class="product-card" @onclick="() => OpenEditSectionMode(sec)" style="cursor: pointer;">
