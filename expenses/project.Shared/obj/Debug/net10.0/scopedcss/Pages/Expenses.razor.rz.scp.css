@@ -16,11 +16,11 @@
 /* --- LEFT SIDEBAR --- */
 .sidebar-custom[b-40ejhd7m0k] {
     width: 280px;
-    background-color: var(--beige-bg);
-    padding: 2rem;
+    background-color: white; /* Clean white background like menu */
+    padding: 0; /* Remove padding to match menu */
     display: flex;
     flex-direction: column;
-    gap: 0.5rem; /* Reduced gap to tighten layout */
+    gap: 0; /* Removed gap, spacing handled by items */
     border-right: 1px solid var(--secondary-grey);
     flex-shrink: 0;
     transition: transform 0.3s ease-in-out;
@@ -40,7 +40,8 @@
     align-items: center;
     justify-content: flex-start;
     width: fit-content;
-    margin-bottom: -1rem;
+    margin: 20px 20px 10px 20px; /* Match menu margin */
+    font-size: 14px;
 }
 
     .close-sidebar-btn:hover[b-40ejhd7m0k] {
@@ -48,31 +49,39 @@
     }
 
 .app-brand[b-40ejhd7m0k] {
-    font-size: 2.5rem;
-    font-weight: 800;
-    color: var(--primary-rose);
-    margin: 0 0 0.5rem 0; /* Reduced margin */
+    font-size: 22px; /* Match menu font size */
+    font-weight: 600; /* Match menu font weight */
+    color: #1a1a1a; /* Match menu color */
+    margin: 0 20px 10px 20px; /* Match menu margin */
     line-height: 1;
-    letter-spacing: -1px;
+    letter-spacing: -0.02em;
     flex-shrink: 0;
 }
 
-.filter-group label[b-40ejhd7m0k] {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: bold;
-    color: #6d6d6d;
-    margin-bottom: 0.5rem;
-    text-transform: uppercase;
-    font-size: 0.85rem;
-    letter-spacing: 1px;
+.filter-group[b-40ejhd7m0k] {
+    margin: 0;
+    padding: 0;
 }
 
-    /* Ensure icons inside labels are Gold */
-    .filter-group label[b-40ejhd7m0k]  svg {
-        stroke: var(--icon-gold) !important;
+    .filter-group label[b-40ejhd7m0k] {
+        padding: 15px 20px 8px 20px; /* Match menu label padding */
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-weight: 600;
+        color: #666;
+        margin-bottom: 0; /* Remove bottom margin */
+        text-transform: uppercase;
+        font-size: 11px; /* Match menu label font size */
+        letter-spacing: 0.8px;
     }
+
+        /* Ensure icons inside labels are Gold */
+        .filter-group label[b-40ejhd7m0k]  svg {
+            stroke: var(--icon-gold) !important;
+            width: 14px;
+            height: 14px;
+        }
 
 .filter-group-flex[b-40ejhd7m0k] {
     display: flex;
@@ -84,6 +93,7 @@
 .date-selectors[b-40ejhd7m0k] {
     display: flex;
     gap: 0.5rem;
+    padding: 0 20px 10px 20px; /* Add padding to align with menu style */
 }
 
 .sidebar-custom select[b-40ejhd7m0k] {
@@ -91,9 +101,10 @@
     padding: 0.5rem;
     border: 1px solid var(--secondary-grey);
     border-radius: 4px;
-    background-color: rgba(255,255,255,0.5);
+    background-color: #f9f9f9;
     color: #333;
     outline: none;
+    font-size: 0.9rem;
 }
 
     .sidebar-custom select:focus[b-40ejhd7m0k] {
@@ -106,7 +117,7 @@
     margin: 0;
     overflow-y: auto;
     flex: 1;
-    padding-right: 5px;
+    padding-right: 0; /* Remove right padding */
 }
 
     .category-list[b-40ejhd7m0k]::-webkit-scrollbar {
@@ -127,49 +138,80 @@
         }
 
 .category-item[b-40ejhd7m0k] {
-    padding: 0.4rem 0.6rem; /* Compact padding */
-    margin-bottom: 0.25rem; /* Reduced margin */
+    width: 100%;
+    padding: 12px 20px; /* Match menu padding */
+    margin-bottom: 0; /* Remove margin */
     cursor: pointer;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    background-color: rgba(255,255,255,0.3);
+    border-radius: 0; /* Remove border radius */
+    transition: all 0.2s;
+    background-color: transparent; /* Transparent background */
     display: flex;
     align-items: center;
-    gap: 10px; /* Reduced gap */
-    font-size: 0.9rem; /* Smaller text size */
+    gap: 12px; /* Match menu gap */
+    font-size: 14px; /* Match menu font size */
+    color: #333;
+    border: none;
+    box-sizing: border-box;
+    position: relative;
 }
 
     .category-item:hover[b-40ejhd7m0k] {
-        background-color: white;
-        color: var(--primary-rose);
+        background-color: #f0f0f0; /* Light grey hover */
+        color: #333;
     }
 
     .category-item.active[b-40ejhd7m0k] {
         background-color: var(--primary-rose);
         color: white;
-        font-weight: bold;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        font-weight: 500;
+        box-shadow: none; /* Remove box shadow */
     }
 
-    /* Icon coloring logic - Use ::deep to target dynamic icons */
+        .category-item.active[b-40ejhd7m0k]::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background-color: var(--primary-rose);
+        }
+
+    /* Icon coloring logic */
     .category-item .cat-icon[b-40ejhd7m0k],
     .category-item[b-40ejhd7m0k]  .cat-icon {
         stroke: var(--icon-gold);
+        width: 18px; /* Match menu icon size */
+        height: 18px; /* Match menu icon size */
     }
 
     .category-item.active .cat-icon[b-40ejhd7m0k],
     .category-item.active[b-40ejhd7m0k]  .cat-icon {
-        stroke: #A38F36;
-        filter: brightness(200%);
+        stroke: white; /* White icon when active */
+        filter: none;
+    }
+
+    .category-item:hover .cat-icon[b-40ejhd7m0k],
+    .category-item:hover[b-40ejhd7m0k]  .cat-icon {
+        stroke: var(--icon-gold); /* Keep gold on hover */
     }
 
 .cat-icon[b-40ejhd7m0k],
 [b-40ejhd7m0k] .cat-icon {
-    width: 20px; /* Smaller icon size */
-    height: 20px;
+    width: 18px;
+    height: 18px;
     flex-shrink: 0;
     stroke: var(--icon-gold);
+    text-align: center;
+    line-height: 1;
 }
+
+    /* Ensure SVG fills the icon container */
+    .cat-icon svg[b-40ejhd7m0k],
+    [b-40ejhd7m0k] .cat-icon svg {
+        width: 100%;
+        height: 100%;
+    }
 
 .cat-content[b-40ejhd7m0k] {
     display: flex;
@@ -179,10 +221,10 @@
 }
 
 .cat-amount[b-40ejhd7m0k] {
-    font-size: 0.75rem; /* Smaller font for amount */
+    font-size: 0.75rem;
     font-weight: normal;
     opacity: 0.8;
-    margin-top: 4px; /* Space between name and amount */
+    margin-top: 2px;
 }
 
 .category-separator[b-40ejhd7m0k] {
@@ -377,6 +419,8 @@
 
     .expense-card-icon[b-40ejhd7m0k]  svg {
         stroke: var(--icon-gold);
+        width: 24px;
+        height: 24px;
     }
 
 .expense-details[b-40ejhd7m0k] {
@@ -693,6 +737,8 @@
 
     .selection-item[b-40ejhd7m0k]  svg {
         stroke: var(--icon-gold);
+        width: 20px;
+        height: 20px;
     }
 
     .selection-item:last-child[b-40ejhd7m0k] {

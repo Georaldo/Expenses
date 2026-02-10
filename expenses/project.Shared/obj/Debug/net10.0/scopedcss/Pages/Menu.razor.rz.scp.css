@@ -36,11 +36,11 @@
     }
 
 .close-sidebar-btn[b-ihjg8pvgj5] {
-    background: var(--primary-rose);
+    background: transparent; /* Removed background color */
     border: none;
-    border-radius: 12px;
-    padding: 10px 16px;
-    color: white;
+    border-radius: 0; /* Removed border radius */
+    padding: 0; /* Removed padding */
+    color: var(--icon-gold); /* Changed color to match icon gold */
     font-weight: 500;
     cursor: pointer;
     display: inline-flex;
@@ -49,12 +49,11 @@
     width: fit-content;
     margin: 20px 20px 10px 20px;
     font-size: 14px;
-    transition: opacity 0.2s;
+    transition: color 0.2s; /* Transition color instead of opacity */
 }
 
     .close-sidebar-btn:hover[b-ihjg8pvgj5] {
-        opacity: 0.9;
-        color: white;
+        color: var(--primary-rose); /* Hover color */
     }
 
 .app-brand[b-ihjg8pvgj5] {
