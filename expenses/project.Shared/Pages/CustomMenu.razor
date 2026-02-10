@@ -50,14 +50,16 @@ else if (CurrentAddStep == "Selection")
             @CurrentSelectionType
         </div>
 
-        <div class="right-actions">
-            <!-- Lightning Icon Button for Price Menu -->
-            <div style="position: relative;">
-                <button class="icon-btn-square" style="border: none; background: transparent; color: #f39c12;" @onclick="TogglePriceMenu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
+        <div class="right-actions" style="display: flex; align-items: stretch; gap: 8px; height: 38px;">
+            <!-- Set explicit height container -->
+
+            <div style="position: relative; height: 100%;">
+                <!-- Lightning Icon Button -->
+                <button class="icon-btn-square" style="border: 1px solid var(--secondary-grey); background: white; border-radius: 8px; width: 40px; height: 100%; display: flex; align-items: center; justify-content: center; color: #f39c12; cursor: pointer; transition: all 0.2s; padding: 0;" @onclick="TogglePriceMenu">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
                 </button>
 
-                <!-- Dropdown Menu for Price Adjustment -->
+                <!-- Dropdown Menu -->
                 @if (IsPriceMenuOpen)
                 {
                     <div class="price-adjustment-panel">
@@ -77,7 +79,8 @@ else if (CurrentAddStep == "Selection")
                 }
             </div>
 
-            <button class="header-action-btn save-action" @onclick="SaveSelection">Save</button>
+            <!-- Save Button -->
+            <button class="header-action-btn save-action" @onclick="SaveSelection" style="height: 100%; display: flex; align-items: center; justify-content: center; border: 1px solid var(--secondary-grey); background: white; border-radius: 8px; padding: 0 1.5rem; color: var(--primary-rose); font-weight: 600; cursor: pointer;">Save</button>
         </div>
     </div>
 }
