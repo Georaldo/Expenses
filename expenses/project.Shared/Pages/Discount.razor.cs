@@ -180,7 +180,7 @@ namespace project.Shared.Pages
 
             // Map targets to values
             if (target == "Price") val = NewItem.Price;
-            else if (target == "PackageValue") val = NewItem.PackageValue;
+            else if (target == "DiscountValue") val = NewItem.DiscountValue;
 
             // Existing mappings
             else if (target == "RedeemPoint") val = NewItem.RedeemPoint;
@@ -212,7 +212,7 @@ namespace project.Shared.Pages
             if (decimal.TryParse(_tempAmountString, out decimal result))
             {
                 if (_calculatorTarget == "Price") NewItem.Price = result;
-                else if (_calculatorTarget == "PackageValue") NewItem.PackageValue = result;
+                else if (_calculatorTarget == "DiscountValue") NewItem.DiscountValue = result;
                 else if (_calculatorTarget == "RedeemPoint") NewItem.RedeemPoint = result;
                 else if (_calculatorTarget == "LowStockAlert") NewItem.LowStockAlert = (int)result;
             }
@@ -319,7 +319,7 @@ namespace project.Shared.Pages
 
         private void SaveItem()
         {
-            if (string.IsNullOrWhiteSpace(NewItem.ItemName) || string.IsNullOrWhiteSpace(NewItem.DiscountSection) || NewItem.PackageValue <= 0)
+            if (string.IsNullOrWhiteSpace(NewItem.ItemName) || string.IsNullOrWhiteSpace(NewItem.DiscountSection) || NewItem.DiscountValue <= 0)
             {
                 ErrorMessage = "Please fill in the Name, Section, and Discount Value fields.";
                 IsErrorPopupOpen = true;
@@ -332,7 +332,7 @@ namespace project.Shared.Pages
                 existingItem.ItemName = NewItem.ItemName; existingItem.DiscountSection = NewItem.DiscountSection; existingItem.DiscountFolder = NewItem.DiscountFolder; existingItem.DisplayImageUrl = NewItem.DisplayImageUrl; existingItem.Price = NewItem.Price; existingItem.Duration = NewItem.Duration; existingItem.Barcode = NewItem.Barcode; existingItem.MinPrice = NewItem.MinPrice; existingItem.MaxPrice = NewItem.MaxPrice; existingItem.OutletAvailability = NewItem.OutletAvailability; existingItem.FreePoint = NewItem.FreePoint; existingItem.RedeemPoint = NewItem.RedeemPoint; existingItem.BillOfMaterial = NewItem.BillOfMaterial; existingItem.Policy = NewItem.Policy; existingItem.TermCondition1 = NewItem.TermCondition1; existingItem.TermCondition2 = NewItem.TermCondition2; existingItem.TermCondition3 = NewItem.TermCondition3; existingItem.ImageName = NewItem.ImageName; existingItem.Unit = NewItem.Unit; existingItem.LowStockAlert = NewItem.LowStockAlert;
 
                 // Save new fields
-                existingItem.PackageValue = NewItem.PackageValue;
+                existingItem.DiscountValue = NewItem.DiscountValue;
             }
             else
             {
@@ -391,7 +391,7 @@ namespace project.Shared.Pages
                 ImageName = item.ImageName,
                 Unit = item.Unit,
                 LowStockAlert = item.LowStockAlert,
-                PackageValue = item.PackageValue,
+                DiscountValue = item.DiscountValue,
                 VoucherList = new List<string>(item.VoucherList)
             };
             _tempImagePreview = item.DisplayImageUrl;

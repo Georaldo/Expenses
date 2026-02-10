@@ -101,6 +101,18 @@
         {
             <Discount ViewType="Discount" OnToggleSidebar="ToggleSidebar" />
         }
+        else if (SelectedView == "Custom Menu")
+        {
+            <CustomMenu OnToggleSidebar="ToggleSidebar" />
+        }
+        else if (SelectedView == "Online Menu")
+        {
+            <OnlineMenu OnToggleSidebar="ToggleSidebar" />
+        }
+        else if (SelectedView == "Catalog")
+        {
+            <Catalog OnToggleSidebar="ToggleSidebar" />
+        }
         else
         {
             <!-- Placeholder for other non-implemented views -->

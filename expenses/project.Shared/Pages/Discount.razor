@@ -257,8 +257,8 @@ else
                         <!-- Discount Value -->
                         <div class="form-group">
                             <label>Discount Value</label>
-                            <div class="form-control clickable" @onclick="@(() => OpenAmountPopup("PackageValue"))">
-                                <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.PackageValue.ToString("N2")</span>
+                            <div class="form-control clickable" @onclick="@(() => OpenAmountPopup("DiscountValue"))">
+                                <span style="color: var(--primary-rose); font-weight: bold;">@NewItem.DiscountValue.ToString("N2")</span>
                             </div>
                             <span class="input-description">maximum 10 vouchers allowed per package</span>
                         </div>
