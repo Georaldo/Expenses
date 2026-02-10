@@ -370,6 +370,22 @@ else
     </div>
 }
 
+<!-- NEW: DELETE CONFIRMATION POPUP -->
+@if (IsDeleteConfirmOpen)
+{
+    <div class="modal-overlay" style="z-index: 3200;" @onclick="() => IsDeleteConfirmOpen = false">
+        <div class="modal-content" style="max-width: 350px; text-align: center; padding: 2rem;" @onclick:stopPropagation>
+            <div style="font-size: 3rem; margin-bottom: 1rem; color: #dc3545;">🗑️</div>
+            <h4 style="margin: 0 0 1rem 0; color: #333;">Confirm Delete</h4>
+            <p style="color: #666; margin-bottom: 2rem;">Are you sure you want to delete <strong>@(_itemToDelete?.ItemName)</strong>?</p>
+            <div style="display: flex; gap: 1rem;">
+                <button class="btn btn-secondary" style="flex: 1;" @onclick="() => IsDeleteConfirmOpen = false">Cancel</button>
+                <button class="btn btn-primary" style="flex: 1; background-color: #dc3545; border-color: #dc3545;" @onclick="ConfirmDelete">Delete</button>
+            </div>
+        </div>
+    </div>
+}
+
 <!-- ERROR POPUP -->
 @if (IsErrorPopupOpen)
 {

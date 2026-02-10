@@ -58,6 +58,7 @@ namespace project.Shared.Pages
         private bool FilterShowOnlineOnly { get; set; } = false;
         private string FilterRedeemStatus { get; set; } = "All";
 
+        // DELETE FUNCTIONALITY
         private bool IsErrorPopupOpen { get; set; } = false;
         private string ErrorMessage { get; set; } = "";
         private bool IsDeleteConfirmOpen { get; set; } = false;
@@ -267,6 +268,10 @@ namespace project.Shared.Pages
 
         private void CloseAddMode() { IsAddMode = false; }
 
+        // DELETE IMPLEMENTATION
+        private void RequestDelete(ServiceItem item) { _itemToDelete = item; IsDeleteConfirmOpen = true; }
+        private void ConfirmDelete() { if (_itemToDelete != null) MenuDb.Remove(_itemToDelete); _itemToDelete = null; IsDeleteConfirmOpen = false; }
+
         private void SaveItem()
         {
             if (string.IsNullOrWhiteSpace(NewItem.ItemName) || string.IsNullOrWhiteSpace(NewItem.ServiceSection) || NewItem.Price <= 0)
@@ -310,11 +315,6 @@ namespace project.Shared.Pages
 
         private void SelectCategoryFromPopup(string cat) { NewItem.ServiceSection = cat; IsCategoryPopupOpen = false; }
         private async Task DownloadReport(string format) { await JS.InvokeVoidAsync("window.print"); }
-
-        private void RequestDelete(ServiceItem item) { _itemToDelete = item; IsDeleteConfirmOpen = true; }
-        // Note: Actual Delete dialog markup was not in snippet, assumed handled inline or simple removal for now.
-        // Adding simple removal for immediate effect based on snippet behavior:
-        private void ConfirmDelete() { if (_itemToDelete != null) MenuDb.Remove(_itemToDelete); _itemToDelete = null; IsDeleteConfirmOpen = false; }
 
         private void ShowItemDetails(ServiceItem item)
         {

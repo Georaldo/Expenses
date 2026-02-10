@@ -53,6 +53,7 @@ namespace project.Shared.Pages
         private bool FilterShowDisabledOnly { get; set; } = false;
         private string FilterRedeemStatus { get; set; } = "All";
 
+        // DELETE FUNCTIONALITY
         private bool IsErrorPopupOpen { get; set; } = false;
         private string ErrorMessage { get; set; } = "";
         private bool IsDeleteConfirmOpen { get; set; } = false;
