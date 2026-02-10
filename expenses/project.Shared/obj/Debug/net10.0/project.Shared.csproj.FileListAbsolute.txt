@@ -29,8 +29,8 @@ C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\De
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\6j9h0ux0hf-{0}-9acv3en18j-9acv3en18j.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\c1zdacf3az-{0}-08mtdlppm0-08mtdlppm0.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\17f3a959ic-{0}-ca434j9tb9-ca434j9tb9.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-zq3kvvlz70-zq3kvvlz70.gz
-C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-zq3kvvlz70-zq3kvvlz70.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\9wwid45cg7-{0}-i6s61izpmc-i6s61izpmc.gz
+C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\compressed\rqptznu6n5-{0}-i6s61izpmc-i6s61izpmc.gz
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.build.json.cache
 C:\Users\ebiso\OneDrive\Documents\GitHub\Expenses\expenses\project.Shared\obj\Debug\net10.0\staticwebassets.development.json
