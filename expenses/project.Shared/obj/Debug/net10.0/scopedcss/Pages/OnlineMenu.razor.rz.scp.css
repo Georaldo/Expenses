@@ -70,6 +70,17 @@
         border-color: var(--primary-rose);
     }
 
+.header-action-btn[b-dqo8rcw0x7] {
+    background: white;
+    border: 1px solid var(--secondary-grey);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: var(--primary-rose);
+    padding: 0.5rem 1.5rem;
+    border-radius: 8px;
+}
+
 /* CONTENT AREA */
 .content-area[b-dqo8rcw0x7] {
     padding: 1rem;
@@ -90,7 +101,7 @@
         border-color: #e67e22;
     }
 
-/* SCROLL AREA (Matches Service.razor) */
+/* SCROLL AREA */
 .secs-scroll-area[b-dqo8rcw0x7] {
     display: flex;
     gap: 0.8rem;
@@ -104,7 +115,7 @@
         display: none;
     }
 
-/* TABS (Matches Service.razor style) */
+/* TABS */
 .sec-btn[b-dqo8rcw0x7] {
     padding: 0.5rem 1.2rem;
     border-radius: 20px;
@@ -130,7 +141,7 @@
         box-shadow: 0 2px 5px rgba(212, 178, 168, 0.4);
     }
 
-/* LIST CARD (Matches CustomMenu style) */
+/* LIST CARD */
 .custom-menu-card[b-dqo8rcw0x7] {
     display: flex;
     align-items: center;
@@ -147,6 +158,86 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
+
+/* EDIT MODE & INFO TAGS */
+.radio-indicator[b-dqo8rcw0x7] {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .radio-indicator.selected[b-dqo8rcw0x7] {
+        border-color: var(--primary-rose);
+    }
+
+/* Updated Info Layout for Edit & Normal Mode */
+.info-tag-box[b-dqo8rcw0x7], .info-display-container[b-dqo8rcw0x7] {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* Space between duration and price blocks */
+}
+
+.info-tag-box[b-dqo8rcw0x7] {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    background: #f9f9f9;
+}
+
+.info-display-container[b-dqo8rcw0x7] {
+    /* No border/background for normal mode, just alignment */
+    text-align: right;
+}
+
+.info-col[b-dqo8rcw0x7] {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 60px; /* Ensure columns have some width */
+}
+
+.info-label[b-dqo8rcw0x7] {
+    font-size: 0.7rem;
+    color: #999;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.info-value[b-dqo8rcw0x7] {
+    color: var(--primary-rose);
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.info-value-normal[b-dqo8rcw0x7] {
+    color: #333;
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+    .info-value-normal.price[b-dqo8rcw0x7] {
+        color: var(--primary-rose);
+        font-weight: 700;
+    }
+
+.info-divider[b-dqo8rcw0x7] {
+    color: #ddd;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.info-divider-normal[b-dqo8rcw0x7] {
+    width: 1px;
+    height: 24px;
+    background-color: #eee;
+    margin: 0 0.5rem;
+}
 
 /* MODAL & POPUPS */
 .modal-overlay[b-dqo8rcw0x7] {
@@ -166,7 +257,7 @@
 .modal-content[b-dqo8rcw0x7] {
     background-color: white;
     width: 90%;
-    max-width: 450px; /* Match Custom Menu popup width */
+    max-width: 450px;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 12px;
@@ -174,7 +265,7 @@
     animation: slideIn-b-dqo8rcw0x7 0.3s ease-out;
     border: 1px solid #ddd;
     padding: 1.5rem;
-    position: relative; /* For close button positioning */
+    position: relative;
 }
 
 @keyframes slideIn-b-dqo8rcw0x7 {
@@ -215,42 +306,6 @@
         margin-bottom: 0.5rem;
         font-weight: 600;
         color: #555;
-    }
-
-.select-wrapper[b-dqo8rcw0x7] {
-    position: relative;
-}
-
-    .select-wrapper[b-dqo8rcw0x7]::after {
-        content: '▼';
-        position: absolute;
-        right: 12px;
-        top: 50%;
-        transform: translateY(-50%);
-        pointer-events: none;
-        font-size: 0.8rem;
-        color: #666;
-    }
-
-.form-control[b-dqo8rcw0x7] {
-    display: block;
-    width: 100%;
-    padding: 0.8rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
-    box-sizing: border-box;
-}
-
-    .form-control:focus[b-dqo8rcw0x7] {
-        border-color: var(--primary-rose);
-        outline: 0;
-        box-shadow: 0 0 0 0.2rem rgba(212, 178, 168, 0.25);
     }
 
 .btn-primary[b-dqo8rcw0x7] {
