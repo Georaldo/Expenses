@@ -188,9 +188,9 @@
 /* DATE/TIME LAYOUT */
 .date-time-container {
     width: 100%;
-    padding: 0 0.5rem;
+    padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
+    /* overflow: visible; */
 }
 
 .row-group {
@@ -199,6 +199,17 @@
     width: 100%;
     align-items: center;
 }
+
+    .row-group .form-control {
+        flex: 1 1 0px; /* Force equal width regardless of content */
+        width: 0; /* Ensure proper flex basis calculation */
+        min-width: 0; /* Allow shrinking below content size */
+    }
+
+    .row-group span {
+        flex: 0 0 auto; /* Prevent 'to' text from shrinking */
+        white-space: nowrap;
+    }
 
 /* DAY SELECTOR */
 .days-selector {
@@ -614,10 +625,22 @@ input:checked + .slider {
         gap: 1rem;
     }
 
+    /* Stack inputs on small screens */
     .row-group {
         flex-direction: column;
+        align-items: stretch;
         gap: 0.5rem;
     }
+
+        .row-group .form-control {
+            width: 100%;
+            flex: none !important;
+        }
+
+        .row-group span {
+            text-align: center;
+            margin: 0.25rem 0;
+        }
 
     .selection-header-bar {
         flex-wrap: wrap;
