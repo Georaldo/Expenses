@@ -62,16 +62,7 @@
              @onclick="SelectAllExpenses"
              style="margin-bottom: 1rem; border-radius: 8px;">
 
-            <span class="cat-icon">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="8" y1="6" x2="21" y2="6"></line>
-                    <line x1="8" y1="12" x2="21" y2="12"></line>
-                    <line x1="8" y1="18" x2="21" y2="18"></line>
-                    <line x1="3" y1="6" x2="3.01" y2="6"></line>
-                    <line x1="3" y1="12" x2="3.01" y2="12"></line>
-                    <line x1="3" y1="18" x2="3.01" y2="18"></line>
-                </svg>
-            </span>
+            <span class="cat-icon">🧾</span>
 
             <div class="cat-content">
                 <span>All Expenses</span>
@@ -89,9 +80,7 @@
                     <li class="category-item @(SelectedCategory == cat ? "active" : "")"
                         @onclick="() => SelectCategory(cat)">
 
-                        <span class="cat-icon">
-                            @((MarkupString)GetIconForCategory(cat))
-                        </span>
+                        <span class="cat-icon">@GetIconForCategory(cat)</span>
 
                         <div class="cat-content">
                             <span>@cat</span>
@@ -177,7 +166,7 @@
                 {
                     <div class="expense-card">
                         <div class="expense-card-icon">
-                            @((MarkupString)GetIconForCategory(expense.Category))
+                            <span class="cat-icon" style="font-size: 24px; width: auto; height: auto;">@GetIconForCategory(expense.Category)</span>
                         </div>
                         <div class="expense-details">
                             <div class="expense-title">@expense.InvoiceTitle</div>
@@ -411,15 +400,20 @@
                     @foreach (var cat in Categories)
                     {
                         <li class="selection-item" @onclick="() => SelectCategoryFromPopup(cat)">
-                            <div style="display: flex; align-items: center; gap: 10px;">@((MarkupString)GetIconForCategory(cat)) @cat</div>@if(NewExpense.Category == cat) {
-                            <span style="color: var(--icon-gold);">✔</span>
-                        }
-                    </li>
-                }
-            </ul>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <span class="cat-icon" style="width: 20px; height: 20px;">@GetIconForCategory(cat)</span>
+                                @cat
+                            </div>
+                            @if (NewExpense.Category == cat)
+                            {
+                                <span style="color: var(--icon-gold);">✔</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
         </div>
-    </div>
-        }
+    }
 
     @if (IsSubCategoryPopupOpen)
     {
