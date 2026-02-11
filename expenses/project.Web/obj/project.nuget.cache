@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "5J+0JQsVP8U=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ebiso\\OneDrive\\Documents\\GitHub\\Expenses\\expenses\\project.Web\\project.Web.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ebiso\\.nuget\\packages\\microsoft.aspnetcore.app.internal.assets\\10.0.3\\microsoft.aspnetcore.app.internal.assets.10.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
